@@ -1,0 +1,7 @@
+{
+	"parent": "create:block/gearshift/block",
+    "textures": {
+        "0": "create:block/sequenced_gearshift_5",
+		"particle": "create:block/sequenced_gearshift_5"
+    }
+}

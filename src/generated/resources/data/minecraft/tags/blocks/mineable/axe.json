@@ -1,0 +1,20 @@
+{
+  "replace": false,
+  "values": [
+    "create_brass_coated:brass_gearbox",
+    "create_brass_coated:brass_clutch",
+    "create_brass_coated:brass_gearshift",
+    "create_brass_coated:brass_encased_chain_drive",
+    "create_brass_coated:brass_encased_fan",
+    "create_brass_coated:brass_nozzle",
+    "create_brass_coated:brass_depot",
+    "create_brass_coated:brass_weighted_ejector",
+    "create_brass_coated:brass_mechanical_press",
+    "create_brass_coated:brass_mechanical_mixer",
+    "create_brass_coated:brass_mechanical_drill",
+    "create_brass_coated:brass_mechanical_harvester",
+    "create_brass_coated:brass_mechanical_plough",
+    "create_brass_coated:brass_deployer",
+    "create_brass_coated:brass_mechanical_saw"
+  ]
+}

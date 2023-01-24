@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "create_brass_coated:block/brass_weighted_ejector/block"
+    },
+    "facing=south": {
+      "model": "create_brass_coated:block/brass_weighted_ejector/block",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "create_brass_coated:block/brass_weighted_ejector/block",
+      "y": 270
+    },
+    "facing=east": {
+      "model": "create_brass_coated:block/brass_weighted_ejector/block",
+      "y": 90
+    }
+  }
+}

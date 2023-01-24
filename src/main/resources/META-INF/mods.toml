@@ -1,0 +1,25 @@
+modLoader="javafml" #mandatory
+loaderVersion="[40,)" #mandatory This is typically bumped every Minecraft version by Forge. See our download page for lists of versions.
+license="All rights reserved"
+[[mods]] #mandatory
+modId="create_brass_coated" #mandatory
+version="0.1" #mandatory
+displayName="Create: Brass Coated" #mandatory
+logoFile="create_brass_coated.png" #optional
+credits="Myself" #optional
+authors="InJir" #optional
+description='''
+Adding brass coated stuff
+'''
+[[dependencies.create_brass_coated]] #optional
+    modId="forge" #mandatory
+    mandatory=true #mandatory
+    versionRange="[40,)" #mandatory
+    ordering="NONE"
+    side="BOTH"
+[[dependencies.create_brass_coated]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.18.2,1.19)"
+    ordering="NONE"
+    side="BOTH"

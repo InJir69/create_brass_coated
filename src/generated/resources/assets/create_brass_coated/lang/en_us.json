@@ -1,0 +1,23 @@
+{
+  "block.create_brass_coated.brass_basin": "Brass Basin",
+  "block.create_brass_coated.brass_bracket": "Brass Bracket",
+  "block.create_brass_coated.brass_clutch": "Brass Clutch",
+  "block.create_brass_coated.brass_deployer": "Brass Deployer",
+  "block.create_brass_coated.brass_depot": "Brass Depot",
+  "block.create_brass_coated.brass_encased_chain_drive": "Brass Encased Chain Drive",
+  "block.create_brass_coated.brass_encased_fan": "Brass Encased Fan",
+  "block.create_brass_coated.brass_gearbox": "Brass Gearbox",
+  "block.create_brass_coated.brass_gearshift": "Brass Gearshift",
+  "block.create_brass_coated.brass_girder": "Brass Girder",
+  "block.create_brass_coated.brass_girder_encased_shaft": "Brass Girder Encased Shaft",
+  "block.create_brass_coated.brass_mechanical_drill": "Brass Mechanical Drill",
+  "block.create_brass_coated.brass_mechanical_harvester": "Brass Mechanical Harvester",
+  "block.create_brass_coated.brass_mechanical_mixer": "Brass Mechanical Mixer",
+  "block.create_brass_coated.brass_mechanical_plough": "Brass Mechanical Plough",
+  "block.create_brass_coated.brass_mechanical_press": "Brass Mechanical Press",
+  "block.create_brass_coated.brass_mechanical_saw": "Brass Mechanical Saw",
+  "block.create_brass_coated.brass_nozzle": "Brass Nozzle",
+  "block.create_brass_coated.brass_weighted_ejector": "Brass Weighted Ejector",
+  "item.create_brass_coated.vertical_brass_gearbox": "Vertical Brass Gearbox",
+  "itemGroup.create_brass_coated": "Create: Brass Coated"
+}

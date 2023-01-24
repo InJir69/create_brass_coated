@@ -1,0 +1,7 @@
+{
+	"parent": "create_brass_coated:block/brass_gearshift/block",
+    "textures": {
+        "0": "create_brass_coated:block/brass_clutch_off",
+		"particle": "create_brass_coated:block/brass_clutch_off"
+    }
+}

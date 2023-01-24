@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "create_brass_coated:block/brass_depot/block"
+    }
+  }
+}
