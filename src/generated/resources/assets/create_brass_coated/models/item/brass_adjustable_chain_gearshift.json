@@ -1,0 +1,6 @@
+{
+  "parent": "create_brass_coated:block/brass_encased_chain_drive/item",
+  "textures": {
+    "side": "create_brass_coated:block/brass_adjustable_chain_gearshift"
+  }
+}
