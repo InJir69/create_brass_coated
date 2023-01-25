@@ -48,10 +48,7 @@ import com.simibubi.create.content.contraptions.processing.BasinTileEntity;
 import com.simibubi.create.content.contraptions.relays.elementary.BracketedKineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.elementary.BracketedKineticTileInstance;
 import com.simibubi.create.content.contraptions.relays.elementary.BracketedKineticTileRenderer;
-import com.simibubi.create.content.contraptions.relays.encased.ShaftInstance;
-import com.simibubi.create.content.contraptions.relays.encased.ShaftRenderer;
-import com.simibubi.create.content.contraptions.relays.encased.SplitShaftInstance;
-import com.simibubi.create.content.contraptions.relays.encased.SplitShaftRenderer;
+import com.simibubi.create.content.contraptions.relays.encased.*;
 import com.simibubi.create.content.contraptions.relays.gearbox.GearshiftTileEntity;
 import com.simibubi.create.content.logistics.block.depot.*;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -158,6 +155,13 @@ public class BrassTiles {
             .tileEntity("brass_basin", BrassBasinTileEntity::new)
             .validBlocks(BrassBlocks.BRASS_BASIN)
             .renderer(() -> BrassBasinRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<BrassAdjustablePulleyTileEntity> ADJUSTABLE_PULLEY = REGISTRATE
+            .tileEntity("brass_adjustable_pulley", BrassAdjustablePulleyTileEntity::new)
+            .instance(() -> BrassShaftInstance::new, false)
+            .validBlocks(BrassBlocks.BRASS_ADJUSTABLE_CHAIN_GEARSHIFT)
+            .renderer(() -> BrassShaftRenderer::new)
             .register();
 
 

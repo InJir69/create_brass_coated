@@ -4,7 +4,6 @@ import com.injir.create_brass_coated.blocks.BrassTiles;
 import com.simibubi.create.content.contraptions.base.DirectionalAxisKineticBlock;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.base.RotatedPillarKineticBlock;
-import com.simibubi.create.content.contraptions.relays.encased.AdjustablePulleyTileEntity;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltBlock;
 import com.simibubi.create.foundation.block.ITE;
 import com.simibubi.create.foundation.utility.Iterate;
@@ -32,9 +31,9 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 
 	public BrassEncasedBeltBlock(Properties properties) {
 		super(properties);
-		registerDefaultState(defaultBlockState().setValue(PART, BrassEncasedBeltBlock.Part.NONE));
+		registerDefaultState(defaultBlockState().setValue(PART, Part.NONE));
 	}
-	public static final Property<BrassEncasedBeltBlock.Part> PART = EnumProperty.create("part", BrassEncasedBeltBlock.Part.class);
+	public static final Property<Part> PART = EnumProperty.create("part", Part.class);
 	public static final BooleanProperty CONNECTED_ALONG_FIRST_COORDINATE =
 			DirectionalAxisKineticBlock.AXIS_ALONG_FIRST_COORDINATE;
 
@@ -77,7 +76,7 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 	@Override
 	public BlockState updateShape(BlockState stateIn, Direction face, BlockState neighbour, LevelAccessor worldIn,
 								  BlockPos currentPos, BlockPos facingPos) {
-		BrassEncasedBeltBlock.Part part = stateIn.getValue(PART);
+		Part part = stateIn.getValue(PART);
 		Axis axis = stateIn.getValue(AXIS);
 		boolean connectionAlongFirst = stateIn.getValue(CONNECTED_ALONG_FIRST_COORDINATE);
 		Axis connectionAxis =
@@ -91,16 +90,16 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 			return stateIn;
 
 		if (!(neighbour.getBlock() instanceof BrassEncasedBeltBlock)) {
-			if (facingAlongFirst != connectionAlongFirst || part == BrassEncasedBeltBlock.Part.NONE)
+			if (facingAlongFirst != connectionAlongFirst || part == Part.NONE)
 				return stateIn;
-			if (part == BrassEncasedBeltBlock.Part.MIDDLE)
-				return stateIn.setValue(PART, positive ? BrassEncasedBeltBlock.Part.END : BrassEncasedBeltBlock.Part.START);
-			if ((part == BrassEncasedBeltBlock.Part.START) == positive)
-				return stateIn.setValue(PART, BrassEncasedBeltBlock.Part.NONE);
+			if (part == Part.MIDDLE)
+				return stateIn.setValue(PART, positive ? Part.END : Part.START);
+			if ((part == Part.START) == positive)
+				return stateIn.setValue(PART, Part.NONE);
 			return stateIn;
 		}
 
-		BrassEncasedBeltBlock.Part otherPart = neighbour.getValue(PART);
+		Part otherPart = neighbour.getValue(PART);
 		Axis otherAxis = neighbour.getValue(AXIS);
 		boolean otherConnection = neighbour.getValue(CONNECTED_ALONG_FIRST_COORDINATE);
 		Axis otherConnectionAxis =
@@ -108,18 +107,18 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 
 		if (neighbour.getValue(AXIS) == faceAxis)
 			return stateIn;
-		if (otherPart != BrassEncasedBeltBlock.Part.NONE && otherConnectionAxis != faceAxis)
+		if (otherPart != Part.NONE && otherConnectionAxis != faceAxis)
 			return stateIn;
 
-		if (part == BrassEncasedBeltBlock.Part.NONE) {
-			part = positive ? BrassEncasedBeltBlock.Part.START : BrassEncasedBeltBlock.Part.END;
+		if (part == Part.NONE) {
+			part = positive ? Part.START : Part.END;
 			connectionAlongFirst = axis == Axis.X ? faceAxis.isVertical() : faceAxis == Axis.X;
 		} else if (connectionAxis != faceAxis) {
 			return stateIn;
 		}
 
-		if ((part == BrassEncasedBeltBlock.Part.START) != positive)
-			part = BrassEncasedBeltBlock.Part.MIDDLE;
+		if ((part == Part.START) != positive)
+			part = Part.MIDDLE;
 
 		return stateIn.setValue(PART, part)
 				.setValue(CONNECTED_ALONG_FIRST_COORDINATE, connectionAlongFirst);
@@ -127,7 +126,7 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 
 	@Override
 	public BlockState getRotatedBlockState(BlockState originalState, Direction targetedFace) {
-		if (originalState.getValue(PART) == BrassEncasedBeltBlock.Part.NONE)
+		if (originalState.getValue(PART) == Part.NONE)
 			return super.getRotatedBlockState(originalState, targetedFace);
 		return super.getRotatedBlockState(originalState,
 				Direction.get(AxisDirection.POSITIVE, getConnectionAxis(originalState)));
@@ -165,7 +164,7 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 	}
 
 	public static boolean areBlocksConnected(BlockState state, BlockState other, Direction facing) {
-		BrassEncasedBeltBlock.Part part = state.getValue(PART);
+		Part part = state.getValue(PART);
 		Axis connectionAxis = getConnectionAxis(state);
 		Axis otherConnectionAxis = getConnectionAxis(other);
 
@@ -173,9 +172,9 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 			return false;
 		if (facing.getAxis() != connectionAxis)
 			return false;
-		if (facing.getAxisDirection() == AxisDirection.POSITIVE && (part == BrassEncasedBeltBlock.Part.MIDDLE || part == BrassEncasedBeltBlock.Part.START))
+		if (facing.getAxisDirection() == AxisDirection.POSITIVE && (part == Part.MIDDLE || part == Part.START))
 			return true;
-		if (facing.getAxisDirection() == AxisDirection.NEGATIVE && (part == BrassEncasedBeltBlock.Part.MIDDLE || part == BrassEncasedBeltBlock.Part.END))
+		if (facing.getAxisDirection() == AxisDirection.NEGATIVE && (part == Part.MIDDLE || part == Part.END))
 			return true;
 
 		return false;
@@ -192,10 +191,10 @@ public class BrassEncasedBeltBlock extends RotatedPillarKineticBlock implements 
 	public static float getRotationSpeedModifier(KineticTileEntity from, KineticTileEntity to) {
 		float fromMod = 1;
 		float toMod = 1;
-		if (from instanceof AdjustablePulleyTileEntity)
-			fromMod = ((AdjustablePulleyTileEntity) from).getModifier();
-		if (to instanceof AdjustablePulleyTileEntity)
-			toMod = ((AdjustablePulleyTileEntity) to).getModifier();
+		if (from instanceof BrassAdjustablePulleyTileEntity)
+			fromMod = ((BrassAdjustablePulleyTileEntity) from).getModifier();
+		if (to instanceof BrassAdjustablePulleyTileEntity)
+			toMod = ((BrassAdjustablePulleyTileEntity) to).getModifier();
 		return fromMod / toMod;
 	}
 

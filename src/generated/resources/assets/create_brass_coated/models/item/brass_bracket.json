@@ -1,7 +1,0 @@
-{
-  "parent": "create_brass_coated:block/bracket/item",
-  "textures": {
-    "bracket": "create_brass_coated:block/bracket_brass",
-    "plate": "create_brass_coated:block/bracket_plate_brass"
-  }
-}

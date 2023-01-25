@@ -1,7 +1,6 @@
 package com.injir.create_brass_coated.blocks.other;
 
-import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltBlock;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltBlock.Part;
+import com.injir.create_brass_coated.blocks.other.BrassEncasedBeltBlock.Part;
 import com.simibubi.create.foundation.data.SpecialBlockStateGen;
 import com.tterrag.registrate.providers.DataGenContext;
 import com.tterrag.registrate.providers.RegistrateBlockstateProvider;
@@ -26,12 +25,12 @@ public class BrassEncasedBeltGenerator extends SpecialBlockStateGen {
 		boolean connectedAlongFirst = state.getValue(BrassEncasedBeltBlock.CONNECTED_ALONG_FIRST_COORDINATE);
 		Axis axis = state.getValue(BrassEncasedBeltBlock.AXIS);
 
-		if (part == BrassEncasedBeltBlock.Part.NONE)
+		if (part == Part.NONE)
 			return axis == Axis.Y ? 90 : 0;
 		if (axis == Axis.X)
-			return (connectedAlongFirst ? 90 : 0) + (part == BrassEncasedBeltBlock.Part.START ? 180 : 0);
+			return (connectedAlongFirst ? 90 : 0) + (part == Part.START ? 180 : 0);
 		if (axis == Axis.Z)
-			return (connectedAlongFirst ? 0 : (part == BrassEncasedBeltBlock.Part.START ? 270 : 90));
+			return (connectedAlongFirst ? 0 : (part == Part.START ? 270 : 90));
 		return 0;
 	}
 
@@ -41,11 +40,11 @@ public class BrassEncasedBeltGenerator extends SpecialBlockStateGen {
 		boolean connectedAlongFirst = state.getValue(BrassEncasedBeltBlock.CONNECTED_ALONG_FIRST_COORDINATE);
 		Axis axis = state.getValue(BrassEncasedBeltBlock.AXIS);
 
-		if (part == BrassEncasedBeltBlock.Part.NONE)
+		if (part == Part.NONE)
 			return axis == Axis.X ? 90 : 0;
 		if (axis == Axis.Z)
-			return (connectedAlongFirst && part == BrassEncasedBeltBlock.Part.END ? 270 : 90);
-		boolean flip = part == BrassEncasedBeltBlock.Part.END && !connectedAlongFirst || part == BrassEncasedBeltBlock.Part.START && connectedAlongFirst;
+			return (connectedAlongFirst && part == Part.END ? 270 : 90);
+		boolean flip = part == Part.END && !connectedAlongFirst || part == Part.START && connectedAlongFirst;
 		if (axis == Axis.Y)
 			return (connectedAlongFirst ? 90 : 0) + (flip ? 180 : 0);
 		return 0;
@@ -61,11 +60,11 @@ public class BrassEncasedBeltGenerator extends SpecialBlockStateGen {
 		BrassEncasedBeltBlock.Part part = state.getValue(BrassEncasedBeltBlock.PART);
 		Axis axis = state.getValue(BrassEncasedBeltBlock.AXIS);
 
-		if (part == BrassEncasedBeltBlock.Part.NONE)
+		if (part == Part.NONE)
 			return "single";
 
 		String orientation = axis == Axis.Y ? "vertical" : "horizontal";
-		String section = part == BrassEncasedBeltBlock.Part.MIDDLE ? "middle" : "end";
+		String section = part == Part.MIDDLE ? "middle" : "end";
 		return section + "_" + orientation;
 	}
 

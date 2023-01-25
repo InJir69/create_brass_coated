@@ -11,6 +11,7 @@ import com.simibubi.create.content.contraptions.TorquePropagator;
 import com.simibubi.create.content.palettes.PalettesItemGroup;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.simibubi.create.foundation.networking.AllPackets;
+import com.simibubi.create.foundation.ponder.content.PonderIndex;
 import com.simibubi.create.foundation.utility.CreateRegistry;
 import com.simibubi.create.foundation.utility.outliner.Outliner;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
@@ -54,6 +55,8 @@ public class Create_Brass_Coated
         CreateRegistry.unwrapAll();
         BrassPackets.registerPackets();
         BrassPartials.init();
+        BrassPonder.register();
+        BrassPonder.registerTags();
     }
 
 

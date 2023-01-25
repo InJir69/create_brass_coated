@@ -18,15 +18,12 @@ import com.injir.create_brass_coated.blocks.girder.BrassGirderBlock;
 import com.injir.create_brass_coated.blocks.girder.BrassGirderBlockStateGenerator;
 import com.injir.create_brass_coated.blocks.girder.BrassGirderEncasedShaftBlock;
 import com.injir.create_brass_coated.blocks.mixer.BrassMechanicalMixerBlock;
-import com.injir.create_brass_coated.blocks.other.BrassClutchBlock;
+import com.injir.create_brass_coated.blocks.other.*;
 import com.injir.create_brass_coated.blocks.drill.BrassDrillBlock;
 import com.injir.create_brass_coated.blocks.drill.BrassDrillMovementBehaviour;
 import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterMovementBehaviour;
-import com.injir.create_brass_coated.blocks.other.BrassEncasedBeltBlock;
-import com.injir.create_brass_coated.blocks.other.BrassEncasedBeltGenerator;
-import com.injir.create_brass_coated.blocks.other.BrassGearshiftBlock;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughBlock;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughMovementBehaviour;
 import com.injir.create_brass_coated.blocks.press.BrassMechanicalPressBlock;
@@ -55,10 +52,7 @@ import com.simibubi.create.content.contraptions.fluids.pipes.BracketGenerator;
 import com.simibubi.create.content.contraptions.processing.BasinBlock;
 import com.simibubi.create.content.contraptions.processing.BasinGenerator;
 import com.simibubi.create.content.contraptions.processing.BasinMovementBehaviour;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltBlock;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltGenerator;
-import com.simibubi.create.content.contraptions.relays.encased.EncasedCTBehaviour;
-import com.simibubi.create.content.contraptions.relays.encased.GearshiftBlock;
+import com.simibubi.create.content.contraptions.relays.encased.*;
 import com.simibubi.create.content.curiosities.girder.ConnectedGirderModel;
 import com.simibubi.create.content.curiosities.girder.GirderBlock;
 import com.simibubi.create.content.curiosities.girder.GirderBlockStateGenerator;
@@ -132,8 +126,8 @@ public class BrassBlocks {
 			.transform(customItemModel())
 			.register();
 
-	public static final BlockEntry<BrassEncasedBeltBlock> BRASS_ENCASED_CHAIN_DRIVE =
-			REGISTRATE.block("brass_encased_chain_drive", BrassEncasedBeltBlock::new)
+	public static final BlockEntry<EncasedBeltBlock> BRASS_ENCASED_CHAIN_DRIVE =
+			REGISTRATE.block("brass_encased_chain_drive", EncasedBeltBlock::new)
 					.initialProperties(SharedProperties::stone)
 					.properties(BlockBehaviour.Properties::noOcclusion)
 					.properties(p -> p.color(MaterialColor.PODZOL))
@@ -143,6 +137,26 @@ public class BrassBlocks {
 							.getExistingFile(p.modLoc("block/" + c.getName() + "/" + suffix))).generate(c, p))
 					.item()
 					.transform(customItemModel())
+					.register();
+
+	public static final BlockEntry<AdjustablePulleyBlock> BRASS_ADJUSTABLE_CHAIN_GEARSHIFT =
+			REGISTRATE.block("brass_adjustable_chain_gearshift", AdjustablePulleyBlock::new)
+					.initialProperties(SharedProperties::stone)
+					.properties(BlockBehaviour.Properties::noOcclusion)
+					.properties(p -> p.color(MaterialColor.NETHER))
+					.transform(BlockStressDefaults.setNoImpact())
+					.transform(TagGen.axeOrPickaxe())
+					.blockstate((c, p) -> new BrassEncasedBeltGenerator((state, suffix) -> {
+						String powered = state.getValue(BrassAdjustablePulleyBlock.POWERED) ? "_powered" : "";
+						return p.models()
+								.withExistingParent(c.getName() + "_" + suffix + powered,
+										p.modLoc("block/brass_encased_chain_drive/" + suffix))
+								.texture("side", p.modLoc("block/" + c.getName() + powered));
+					}).generate(c, p))
+					.item()
+					.model((c, p) -> p.withExistingParent(c.getName(), p.modLoc("block/brass_encased_chain_drive/item"))
+							.texture("side", p.modLoc("block/" + c.getName())))
+					.build()
 					.register();
 
 	public static final BlockEntry<BrassEncasedFanBlock> BRASS_ENCASED_FAN = REGISTRATE.block("brass_encased_fan", BrassEncasedFanBlock::new)
