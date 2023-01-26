@@ -25,7 +25,10 @@ public class BrassPartials {
 	BRASS_EJECTOR_TOP = block("brass_weighted_ejector/top"),
 	BRASS_GIRDER_SEGMENT_TOP = block("brass_girder/segment_top"),
 	BRASS_GIRDER_SEGMENT_MIDDLE = block("brass_girder/segment_middle"),
-	BRASS_GIRDER_SEGMENT_BOTTOM = block("brass_girder/segment_bottom")
+	BRASS_GIRDER_SEGMENT_BOTTOM = block("brass_girder/segment_bottom"),
+	BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE = block("brass_portable_storage_interface/block_middle"),
+	BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED = block("brass_portable_storage_interface/block_middle_powered"),
+	BRASS_PORTABLE_STORAGE_INTERFACE_TOP = block("brass_portable_storage_interface/block_top")
 	;
 
 	public static final Map<Direction, PartialModel> BRASS_GIRDER_BRACKETS = new EnumMap<>(Direction.class);

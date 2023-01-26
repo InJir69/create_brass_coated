@@ -22,6 +22,9 @@ import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxRenderer;
 import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxTileEntity;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterRenderer;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterTileEntity;
+import com.injir.create_brass_coated.blocks.portable_storage.BrassPSIInstance;
+import com.injir.create_brass_coated.blocks.portable_storage.BrassPortableItemInterfaceTileEntity;
+import com.injir.create_brass_coated.blocks.portable_storage.BrassPortableStorageInterfaceRenderer;
 import com.injir.create_brass_coated.blocks.press.BrassMechanicalPressRenderer;
 import com.injir.create_brass_coated.blocks.press.BrassMechanicalPressTileEntity;
 import com.injir.create_brass_coated.blocks.press.BrassPressInstance;
@@ -30,6 +33,9 @@ import com.injir.create_brass_coated.blocks.saw.BrassSawRenderer;
 import com.injir.create_brass_coated.blocks.saw.BrassSawTileEntity;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
+import com.simibubi.create.content.contraptions.components.actors.PSIInstance;
+import com.simibubi.create.content.contraptions.components.actors.PortableItemInterfaceTileEntity;
+import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceRenderer;
 import com.simibubi.create.content.contraptions.components.deployer.DeployerInstance;
 import com.simibubi.create.content.contraptions.components.deployer.DeployerRenderer;
 import com.simibubi.create.content.contraptions.components.deployer.DeployerTileEntity;
@@ -163,6 +169,14 @@ public class BrassTiles {
             .validBlocks(BrassBlocks.BRASS_ADJUSTABLE_CHAIN_GEARSHIFT)
             .renderer(() -> BrassShaftRenderer::new)
             .register();
+
+    public static final BlockEntityEntry<BrassPortableItemInterfaceTileEntity> PORTABLE_STORAGE_INTERFACE =
+            REGISTRATE
+                    .tileEntity("brass_portable_storage_interface", BrassPortableItemInterfaceTileEntity::new)
+                    .instance(() -> BrassPSIInstance::new)
+                    .validBlocks(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
+                    .renderer(() -> BrassPortableStorageInterfaceRenderer::new)
+                    .register();
 
 
 

@@ -26,6 +26,8 @@ import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterMovementBehaviour;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughBlock;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughMovementBehaviour;
+import com.injir.create_brass_coated.blocks.portable_storage.BrassPortableStorageInterfaceBlock;
+import com.injir.create_brass_coated.blocks.portable_storage.BrassPortableStorageInterfaceMovement;
 import com.injir.create_brass_coated.blocks.press.BrassMechanicalPressBlock;
 import com.injir.create_brass_coated.blocks.saw.BrassSawBlock;
 import com.injir.create_brass_coated.blocks.saw.BrassSawGenerator;
@@ -38,6 +40,8 @@ import com.simibubi.create.content.AllSections;
 import com.simibubi.create.content.contraptions.components.AssemblyOperatorBlockItem;
 import com.simibubi.create.content.contraptions.components.actors.PloughBlock;
 import com.simibubi.create.content.contraptions.components.actors.PloughMovementBehaviour;
+import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceBlock;
+import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceMovement;
 import com.simibubi.create.content.contraptions.components.deployer.DeployerBlock;
 import com.simibubi.create.content.contraptions.components.deployer.DeployerMovementBehaviour;
 import com.simibubi.create.content.contraptions.components.deployer.DeployerMovingInteraction;
@@ -309,6 +313,17 @@ public class BrassBlocks {
 			.item(AssemblyOperatorBlockItem::new)
 			.transform(customItemModel())
 			.register();
+
+	public static final BlockEntry<BrassPortableStorageInterfaceBlock> BRASS_PORTABLE_STORAGE_INTERFACE =
+			REGISTRATE.block("brass_portable_storage_interface", BrassPortableStorageInterfaceBlock::forItems)
+					.initialProperties(SharedProperties::stone)
+					.properties(p -> p.color(MaterialColor.PODZOL))
+					.transform(TagGen.axeOrPickaxe())
+					.blockstate((c, p) -> p.directionalBlock(c.get(), AssetLookup.partialBaseModel(c, p)))
+					.onRegister(movementBehaviour(new BrassPortableStorageInterfaceMovement()))
+					.item()
+					.transform(customItemModel())
+					.register();
 
 	public static final BlockEntry<BrassSawBlock> BRASS_MECHANICAL_SAW = REGISTRATE.block("brass_mechanical_saw", BrassSawBlock::new)
 			.initialProperties(SharedProperties::stone)

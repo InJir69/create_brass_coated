@@ -16,6 +16,7 @@
     "create_brass_coated:brass_mechanical_harvester",
     "create_brass_coated:brass_mechanical_plough",
     "create_brass_coated:brass_deployer",
+    "create_brass_coated:brass_portable_storage_interface",
     "create_brass_coated:brass_mechanical_saw"
   ]
 }

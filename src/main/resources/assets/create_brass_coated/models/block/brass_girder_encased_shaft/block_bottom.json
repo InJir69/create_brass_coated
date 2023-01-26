@@ -1,8 +1,8 @@
 {
 	"credit": "Made with Blockbench",
 	"textures": {
-		"0": "create:block/girder",
-		"particle": "create:block/chute_block"
+		"0": "create_brass_coated:block/brass_girder",
+		"particle": "create_brass_coated:block/brass_chute_block"
 	},
 	"elements": [
 		{
