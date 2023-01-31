@@ -33,8 +33,7 @@ import static com.simibubi.create.Create.onCtor;
 public class Create_Brass_Coated
 {
     public static final String ID = "create_brass_coated";
-    public static final String MOD_ID = "create_brass_coated";
-    private static final NonNullSupplier<CreateRegistrate> REGISTRATE = CreateRegistrate.lazy(MOD_ID);
+    private static final NonNullSupplier<CreateRegistrate> BRASS_REGISTRATE = CreateRegistrate.lazy(ID);
 
     public Create_Brass_Coated(){
         onCtor();
@@ -52,7 +51,6 @@ public class Create_Brass_Coated
         modEventBus.addListener(Create_Brass_Coated::init);}
 
     public static void init(final FMLCommonSetupEvent event) {
-        CreateRegistry.unwrapAll();
         BrassPackets.registerPackets();
         BrassPartials.init();
         BrassPonder.register();
@@ -61,9 +59,9 @@ public class Create_Brass_Coated
 
 
     public static ResourceLocation asResource(String path) {
-        return new ResourceLocation(MOD_ID, path);
+        return new ResourceLocation(ID, path);
     }
     public static CreateRegistrate registrate() {
-        return REGISTRATE.get();
+        return BRASS_REGISTRATE.get();
     }
 }

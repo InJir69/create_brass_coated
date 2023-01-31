@@ -42,10 +42,10 @@ public class BrassPonder extends PonderIndex {
 		HELPER.forComponents(BrassBlocks.BRASS_MECHANICAL_PRESS)
 			.addStoryBoard("mechanical_press/pressing", ProcessingScenes::pressing)
 			.addStoryBoard("mechanical_press/compacting", ProcessingScenes::compacting);
-		HELPER.forComponents(BrassBlocks.BRASS_BASIN)
-			.addStoryBoard("basin", ProcessingScenes::basin)
-			.addStoryBoard("mechanical_mixer/mixing", ProcessingScenes::mixing)
-			.addStoryBoard("mechanical_press/compacting", ProcessingScenes::compacting);
+		//HELPER.forComponents(BrassBlocks.BRASS_BASIN)
+			//.addStoryBoard("basin", ProcessingScenes::basin)
+			//.addStoryBoard("mechanical_mixer/mixing", ProcessingScenes::mixing)
+			//.addStoryBoard("mechanical_press/compacting", ProcessingScenes::compacting);
 		HELPER.addStoryBoard(BrassBlocks.BRASS_DEPOT, "depot", BeltScenes::depot);
 		HELPER.forComponents(BrassBlocks.BRASS_WEIGHTED_EJECTOR)
 			.addStoryBoard("weighted_ejector/eject", EjectorScenes::ejector)
@@ -100,7 +100,7 @@ public class BrassPonder extends PonderIndex {
 		PonderRegistry.TAGS.forTag(PonderTag.ARM_TARGETS)
 			.add(BrassBlocks.BRASS_DEPOT)
 			.add(BrassBlocks.BRASS_WEIGHTED_EJECTOR)
-			.add(BrassBlocks.BRASS_BASIN)
+			//.add(BrassBlocks.BRASS_BASIN)
 			.add(BrassBlocks.BRASS_DEPLOYER)
 			.add(BrassBlocks.BRASS_MECHANICAL_SAW)
 			.add(AllBlocks.BLAZE_BURNER);

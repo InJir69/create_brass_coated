@@ -15,14 +15,14 @@ import static com.simibubi.create.Create.REGISTRATE;
 
 public class BrassItems {
 
-    private static final CreateRegistrate REGISTRATE = Create_Brass_Coated.registrate();
+    private static final CreateRegistrate BRASS_REGISTRATE = Create_Brass_Coated.registrate();
 
     static {
-        CreateRegistrate REGISTRATE = Create_Brass_Coated.registrate().creativeModeTab(() -> BrassTab.BRASS_TAB);
+        CreateRegistrate BRASS_REGISTRATE = Create_Brass_Coated.registrate().creativeModeTab(() -> BrassTab.BRASS_TAB);
     }
 
     public static final ItemEntry<BrassVerticalGearboxItem> VERTICAL_BRASS_GEARBOX =
-            REGISTRATE.item("vertical_brass_gearbox", BrassVerticalGearboxItem::new)
+            BRASS_REGISTRATE.item("vertical_brass_gearbox", BrassVerticalGearboxItem::new)
                     .model(AssetLookup.customBlockItemModel("brass_gearbox", "item_vertical"))
                     .register();
     public static void register() {}

@@ -1,7 +1,5 @@
 package com.injir.create_brass_coated.blocks;
 
-import com.injir.create_brass_coated.blocks.basin.BrassBasinRenderer;
-import com.injir.create_brass_coated.blocks.basin.BrassBasinTileEntity;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerInstance;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerRenderer;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerTileEntity;
@@ -157,11 +155,11 @@ public class BrassTiles {
             .renderer(() -> BrassEjectorRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<BrassBasinTileEntity> BRASS_BASIN = REGISTRATE
-            .tileEntity("brass_basin", BrassBasinTileEntity::new)
-            .validBlocks(BrassBlocks.BRASS_BASIN)
-            .renderer(() -> BrassBasinRenderer::new)
-            .register();
+    //public static final BlockEntityEntry<BrassBasinTileEntity> BRASS_BASIN = REGISTRATE
+            //.tileEntity("brass_basin", BrassBasinTileEntity::new)
+            //.validBlocks(BrassBlocks.BRASS_BASIN)
+            //.renderer(() -> BrassBasinRenderer::new)
+            //.register();
 
     public static final BlockEntityEntry<BrassAdjustablePulleyTileEntity> ADJUSTABLE_PULLEY = REGISTRATE
             .tileEntity("brass_adjustable_pulley", BrassAdjustablePulleyTileEntity::new)
