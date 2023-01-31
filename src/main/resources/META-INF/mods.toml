@@ -22,3 +22,9 @@ An addon to Create to coat andesite blocks with brass!
     versionRange="[1.18.2,1.19)"
     ordering="NONE"
     side="BOTH"
+[[dependencies.create_brass_coated]]
+modId="create"
+mandatory=true
+versionRange="[0.5.0.g,)"
+ordering="NONE"
+side="BOTH"
