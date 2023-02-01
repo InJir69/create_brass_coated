@@ -466,6 +466,12 @@ public class BrassEjectorTileEntity extends KineticTileEntity {
 			.scale(.5f);
 	}
 
+	@Override
+	public void destroy() {
+		super.destroy();
+		dropFlyingItems();
+	}
+
 	public void dropFlyingItems() {
 		for (IntAttached<ItemStack> intAttached : launchedItems) {
 			Vec3 ejectVec = getLaunchedItemLocation(intAttached.getFirst());

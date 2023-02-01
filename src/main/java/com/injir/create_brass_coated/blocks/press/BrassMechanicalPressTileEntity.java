@@ -21,6 +21,7 @@ import com.simibubi.create.foundation.utility.VecHelper;
 import net.minecraft.core.BlockPos;
 import net.minecraft.core.NonNullList;
 import net.minecraft.nbt.CompoundTag;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.Container;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.ItemStack;
@@ -134,7 +135,7 @@ public class BrassMechanicalPressTileEntity extends BasinOperatingTileEntity imp
 				ItemEntity created =
 					new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), result);
 				created.setDefaultPickUpDelay();
-				created.setDeltaMovement(VecHelper.offsetRandomly(Vec3.ZERO, Create.RANDOM, .05f));
+				created.setDeltaMovement(VecHelper.offsetRandomly(Vec3.ZERO, (RandomSource) Create.RANDOM, .05f));
 				level.addFreshEntity(created);
 			}
 			item.shrink(1);

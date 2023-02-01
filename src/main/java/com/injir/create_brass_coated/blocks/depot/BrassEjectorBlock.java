@@ -64,14 +64,14 @@ public class BrassEjectorBlock extends HorizontalKineticBlock implements ITE<Bra
 	}
 
 	@Override
-	public void fallOn(Level p_180658_1_, BlockState p_152427_, BlockPos p_180658_2_, Entity p_180658_3_,
+	public void fallOn(Level p_180658_1_, BlockState pState, BlockPos p_180658_2_, Entity p_180658_3_,
 		float p_180658_4_) {
 		Optional<BrassEjectorTileEntity> tileEntityOptional = getTileEntityOptional(p_180658_1_, p_180658_2_);
 		if (tileEntityOptional.isPresent() && !p_180658_3_.isSuppressingBounce()) {
 			p_180658_3_.causeFallDamage(p_180658_4_, 1.0F, DamageSource.FALL);
 			return;
 		}
-		super.fallOn(p_180658_1_, p_152427_, p_180658_2_, p_180658_3_, p_180658_4_);
+		super.fallOn(p_180658_1_, pState, p_180658_2_, p_180658_3_, p_180658_4_);
 	}
 
 	@Override
@@ -128,12 +128,6 @@ public class BrassEjectorBlock extends HorizontalKineticBlock implements ITE<Bra
 		if (AllItems.WRENCH.isIn(player.getItemInHand(hand)))
 			return InteractionResult.PASS;
 		return BrassSharedDepotBlockMethods.onUse(state, world, pos, player, hand, ray);
-	}
-
-	@Override
-	public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		withTileEntityDo(worldIn, pos, BrassEjectorTileEntity::dropFlyingItems);
-		BrassSharedDepotBlockMethods.onReplaced(state, worldIn, pos, newState, isMoving);
 	}
 
 	@Override

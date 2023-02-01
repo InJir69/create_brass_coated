@@ -57,7 +57,7 @@ public class BrassDepotBlock extends Block implements ITE<BrassDepotTileEntity>,
 
 	@Override
 	public void onRemove(BlockState state, Level worldIn, BlockPos pos, BlockState newState, boolean isMoving) {
-		BrassSharedDepotBlockMethods.onReplaced(state, worldIn, pos, newState, isMoving);
+		ITE.onRemove(state, worldIn, pos, newState);
 	}
 
 	@Override

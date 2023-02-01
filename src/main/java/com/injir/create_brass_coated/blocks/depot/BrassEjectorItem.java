@@ -1,7 +1,11 @@
 package com.injir.create_brass_coated.blocks.depot;
 
+import com.injir.create_brass_coated.BrassPackets;
+import com.simibubi.create.content.logistics.block.depot.EjectorPlacementPacket;
 import com.simibubi.create.content.logistics.block.depot.EjectorTargetHandler;
+import com.simibubi.create.foundation.networking.AllPackets;
 import net.minecraft.core.BlockPos;
+import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.world.InteractionResult;
 import net.minecraft.world.entity.player.Player;
 import net.minecraft.world.item.BlockItem;
@@ -14,6 +18,7 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.fml.DistExecutor;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
+import net.minecraftforge.network.PacketDistributor;
 
 @EventBusSubscriber
 public class BrassEjectorItem extends BlockItem {
@@ -37,12 +42,14 @@ public class BrassEjectorItem extends BlockItem {
 	}
 
 	@Override
-	protected boolean updateCustomBlockEntityTag(BlockPos pos, Level world, Player p_195943_3_, ItemStack p_195943_4_,
-		BlockState p_195943_5_) {
-		if (world.isClientSide)
-			DistExecutor.unsafeRunWhenOn(Dist.CLIENT, () -> () -> BrassEjectorTargetHandler.flushSettings(pos));
-		return super.updateCustomBlockEntityTag(pos, world, p_195943_3_, p_195943_4_, p_195943_5_);
+	protected boolean updateCustomBlockEntityTag(BlockPos pos, Level world, Player player, ItemStack p_195943_4_,
+												 BlockState p_195943_5_) {
+		if (!world.isClientSide && player instanceof ServerPlayer sp)
+			BrassPackets.channel.send(PacketDistributor.PLAYER.with(() -> sp),
+					new BrassEjectorPlacementPacket.ClientBoundRequest(pos));
+		return super.updateCustomBlockEntityTag(pos, world, player, p_195943_4_, p_195943_5_);
 	}
+
 
 	@Override
 	public boolean canAttackBlock(BlockState state, Level world, BlockPos pos,

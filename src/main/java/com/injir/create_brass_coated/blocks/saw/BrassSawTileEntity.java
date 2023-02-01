@@ -33,6 +33,7 @@ import net.minecraft.nbt.CompoundTag;
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.tags.BlockTags;
 import net.minecraft.util.Mth;
+import net.minecraft.util.RandomSource;
 import net.minecraft.world.entity.item.ItemEntity;
 import net.minecraft.world.item.BlockItem;
 import net.minecraft.world.item.Item;
@@ -263,7 +264,7 @@ public class BrassSawTileEntity extends BlockBreakingKineticTileEntity {
 		else
 			particleData = new ItemParticleOption(ParticleTypes.ITEM, stack);
 
-		Random r = level.random;
+		RandomSource r = level.random;
 		Vec3 v = VecHelper.getCenterOf(this.worldPosition)
 			.add(0, 5 / 16f, 0);
 		for (int i = 0; i < 10; i++) {
@@ -286,7 +287,7 @@ public class BrassSawTileEntity extends BlockBreakingKineticTileEntity {
 			speed = .125f;
 		}
 
-		Random r = level.random;
+		RandomSource r = level.random;
 		Vec3 vec = getItemMovementVec();
 		Vec3 pos = VecHelper.getCenterOf(this.worldPosition);
 		float offset = inventory.recipeDuration != 0 ? (float) (inventory.remainingTime) / inventory.recipeDuration : 0;

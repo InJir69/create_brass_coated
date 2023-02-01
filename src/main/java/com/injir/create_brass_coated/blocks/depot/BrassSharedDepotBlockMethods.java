@@ -76,22 +76,6 @@ public class BrassSharedDepotBlockMethods {
 		return InteractionResult.SUCCESS;
 	}
 
-	public static void onReplaced(BlockState state, Level worldIn, BlockPos pos, BlockState newState,
-		boolean isMoving) {
-		if (!state.hasBlockEntity() || state.getBlock() == newState.getBlock())
-			return;
-		BrassDepotBehaviour behaviour = get(worldIn, pos);
-		if (behaviour == null)
-			return;
-		ItemHelper.dropContents(worldIn, pos, behaviour.processingOutputBuffer);
-		for (TransportedItemStack transportedItemStack : behaviour.incoming)
-			Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), transportedItemStack.stack);
-		if (!behaviour.getHeldItemStack()
-			.isEmpty())
-			Containers.dropItemStack(worldIn, pos.getX(), pos.getY(), pos.getZ(), behaviour.getHeldItemStack());
-		worldIn.removeBlockEntity(pos);
-	}
-
 	public static void onLanded(BlockGetter worldIn, Entity entityIn) {
 		if (!(entityIn instanceof ItemEntity))
 			return;

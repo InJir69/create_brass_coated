@@ -9,6 +9,7 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import net.minecraft.core.BlockPos;
 import net.minecraft.network.Connection;
+import net.minecraft.network.PacketSendListener;
 import net.minecraft.network.chat.Component;
 import net.minecraft.network.protocol.Packet;
 import net.minecraft.network.protocol.PacketFlow;
@@ -18,10 +19,7 @@ import net.minecraft.server.level.ServerPlayer;
 import net.minecraft.server.network.ServerGamePacketListenerImpl;
 import net.minecraft.world.MenuProvider;
 import net.minecraft.world.damagesource.EntityDamageSource;
-import net.minecraft.world.entity.Entity;
-import net.minecraft.world.entity.LivingEntity;
-import net.minecraft.world.entity.Mob;
-import net.minecraft.world.entity.Pose;
+import net.minecraft.world.entity.*;
 import net.minecraft.world.entity.monster.Creeper;
 import net.minecraft.world.item.ItemStack;
 import net.minecraft.world.level.Level;
@@ -38,6 +36,7 @@ import net.minecraftforge.eventbus.api.SubscribeEvent;
 import net.minecraftforge.fml.common.Mod.EventBusSubscriber;
 import org.apache.commons.lang3.tuple.Pair;
 
+import javax.annotation.Nullable;
 import java.util.OptionalInt;
 import java.util.UUID;
 
@@ -116,7 +115,12 @@ public class BrassDeployerFakePlayer extends FakePlayer {
 	}
 
 	@Override
-	protected void equipEventAndSound(ItemStack p_147219_) {}
+	protected boolean doesEmitEquipEvent(EquipmentSlot p_217035_) {
+		return false;
+	}
+
+	@Override
+	protected void playEquipSound(ItemStack p_217042_) {}
 
 	@Override
 	public void remove(RemovalReason p_150097_) {
@@ -135,7 +139,7 @@ public class BrassDeployerFakePlayer extends FakePlayer {
 	public static void entitiesDontRetaliate(LivingSetAttackTargetEvent event) {
 		if (!(event.getTarget() instanceof BrassDeployerFakePlayer))
 			return;
-		LivingEntity entityLiving = event.getEntityLiving();
+		LivingEntity entityLiving = event.getEntity();
 		if (!(entityLiving instanceof Mob))
 			return;
 		Mob mob = (Mob) entityLiving;
@@ -164,7 +168,7 @@ public class BrassDeployerFakePlayer extends FakePlayer {
 		public void send(Packet<?> packetIn) {}
 
 		@Override
-		public void send(Packet<?> packetIn, GenericFutureListener<? extends Future<? super Void>> futureListeners) {}
+		public void send(Packet<?> pPacket, @Nullable PacketSendListener pListener) {}
 	}
 
 }
