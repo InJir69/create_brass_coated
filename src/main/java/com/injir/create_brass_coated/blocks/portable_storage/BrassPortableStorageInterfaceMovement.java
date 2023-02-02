@@ -2,10 +2,6 @@ package com.injir.create_brass_coated.blocks.portable_storage;
 
 import com.jozufozu.flywheel.api.MaterialManager;
 import com.jozufozu.flywheel.core.virtual.VirtualRenderWorld;
-import com.simibubi.create.content.contraptions.components.actors.PSIActorInstance;
-import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceBlock;
-import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceRenderer;
-import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceTileEntity;
 import com.simibubi.create.content.contraptions.components.structureMovement.MovementBehaviour;
 import com.simibubi.create.content.contraptions.components.structureMovement.MovementContext;
 import com.simibubi.create.content.contraptions.components.structureMovement.render.ActorInstance;
@@ -50,7 +46,7 @@ public class BrassPortableStorageInterfaceMovement implements MovementBehaviour 
 	@Override
 	public ActorInstance createInstance(MaterialManager materialManager, VirtualRenderWorld simulationWorld,
 		MovementContext context) {
-		return new PSIActorInstance(materialManager, simulationWorld, context);
+		return new BrassPSIActorInstance(materialManager, simulationWorld, context);
 	}
 
 	@Override
