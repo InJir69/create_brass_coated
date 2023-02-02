@@ -70,6 +70,10 @@ public class BrassPonder extends PonderIndex {
 			.addStoryBoard("harvester", MovementActorScenes::harvester);
 		HELPER.forComponents(BrassBlocks.BRASS_MECHANICAL_PLOUGH)
 			.addStoryBoard("plough", MovementActorScenes::plough);
+		HELPER.forComponents(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
+				.addStoryBoard("portable_interface/transfer", MovementActorScenes::psiTransfer, PonderTag.CONTRAPTION_ACTOR)
+				.addStoryBoard("portable_interface/redstone", MovementActorScenes::psiRedstone);
+
 
 		// Debug scenes, can be found in game via the Brass Hand
 		if (REGISTER_DEBUG_SCENES)
@@ -107,7 +111,8 @@ public class BrassPonder extends PonderIndex {
 
 		PonderRegistry.TAGS.forTag(PonderTag.LOGISTICS)
 			.add(BrassBlocks.BRASS_DEPOT)
-			.add(BrassBlocks.BRASS_WEIGHTED_EJECTOR);
+			.add(BrassBlocks.BRASS_WEIGHTED_EJECTOR)
+			.add(AllBlocks.PORTABLE_STORAGE_INTERFACE);
 
 		PonderRegistry.TAGS.forTag(PonderTag.DECORATION)
 			.add(BrassBlocks.BRASS_GIRDER);
@@ -116,7 +121,8 @@ public class BrassPonder extends PonderIndex {
 			.add(BrassBlocks.BRASS_MECHANICAL_HARVESTER)
 			.add(BrassBlocks.BRASS_MECHANICAL_PLOUGH)
 			.add(BrassBlocks.BRASS_MECHANICAL_DRILL)
-			.add(BrassBlocks.BRASS_MECHANICAL_SAW);
+			.add(BrassBlocks.BRASS_MECHANICAL_SAW)
+			.add(AllBlocks.PORTABLE_STORAGE_INTERFACE);
 
 	}
 

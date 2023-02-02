@@ -107,16 +107,17 @@ public class BrassPortableStorageInterfaceRenderer extends SafeTileEntityRendere
 
 	static PartialModel getMiddleForState(BlockState state, boolean lit) {
 		if (BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE.has(state))
-			return lit ? AllBlockPartials.PORTABLE_FLUID_INTERFACE_MIDDLE_POWERED
-				: AllBlockPartials.PORTABLE_FLUID_INTERFACE_MIDDLE;
+			return lit ? BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED
+					: BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE;
 		return lit ? BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE_POWERED
-			: BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE;
+				: BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_MIDDLE;
 	}
 
 	static PartialModel getTopForState(BlockState state) {
-		if (AllBlocks.PORTABLE_FLUID_INTERFACE.has(state))
-			return AllBlockPartials.PORTABLE_FLUID_INTERFACE_TOP;
+		if (BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE.has(state))
+			return BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_TOP;
 		return BrassPartials.BRASS_PORTABLE_STORAGE_INTERFACE_TOP;
 	}
+
 
 }

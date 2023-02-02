@@ -50,7 +50,7 @@ public class BrassPortableStorageInterfaceMovement implements MovementBehaviour 
 	@Override
 	public ActorInstance createInstance(MaterialManager materialManager, VirtualRenderWorld simulationWorld,
 		MovementContext context) {
-		return new PSIActorInstance(materialManager, simulationWorld, context);
+		return new BrassPSIActorInstance(materialManager, simulationWorld, context);
 	}
 
 	@Override

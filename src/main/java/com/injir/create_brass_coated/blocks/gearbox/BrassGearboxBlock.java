@@ -26,7 +26,7 @@ import net.minecraft.world.phys.HitResult;
 import java.util.Arrays;
 import java.util.List;
 
-public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<BrassGearboxTileEntity> {
+public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<GearboxTileEntity> {
 
 	public BrassGearboxBlock(Properties properties) {
 		super(properties);
@@ -50,10 +50,10 @@ public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<
 			return super.getDrops(state, builder);
 		return Arrays.asList(new ItemStack(BrassItems.VERTICAL_BRASS_GEARBOX.get()));
 	}
-	
+
 	@Override
 	public ItemStack getCloneItemStack(BlockState state, HitResult target, BlockGetter world, BlockPos pos,
-			Player player) {
+									   Player player) {
 		if (state.getValue(AXIS).isVertical())
 			return super.getCloneItemStack(state, target, world, pos, player);
 		return new ItemStack(BrassItems.VERTICAL_BRASS_GEARBOX.get());
@@ -77,12 +77,12 @@ public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<
 	}
 
 	@Override
-	public Class<BrassGearboxTileEntity> getTileEntityClass() {
-		return BrassGearboxTileEntity.class;
+	public Class<GearboxTileEntity> getTileEntityClass() {
+		return GearboxTileEntity.class;
 	}
 
 	@Override
-	public BlockEntityType<? extends BrassGearboxTileEntity> getTileEntityType() {
+	public BlockEntityType<? extends GearboxTileEntity> getTileEntityType() {
 		return BrassTiles.BRASS_GEARBOX.get();
 	}
 }

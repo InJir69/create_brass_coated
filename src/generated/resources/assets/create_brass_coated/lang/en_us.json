@@ -986,6 +986,18 @@
 
   "create_brass_coated.ponder.windmill_structure.header": "Windmill Contraptions",
   "create_brass_coated.ponder.windmill_structure.text_1": "Any Structure can count as a valid Windmill, as long as it contains at least 8 sail-like Blocks.",
-  
+
+  "create.block.brass_deployer.damage_source_name": "a rogue Brass Deployer",
+  "create.tooltip.brass_deployer.header": "Brass Deployer Information",
+  "create.tooltip.brass_deployer.using": "Mode: Use",
+  "create.tooltip.brass_deployer.punching": "Mode: Attack",
+  "create.tooltip.brass_deployer.contains": "Item: %1$s x%2$s",
+
+  "create.brass_weighted_ejector.target_set": "Target Selected",
+  "create.brass_weighted_ejector.target_not_valid": "Ejecting to Adjacent block (Target was not Valid)",
+  "create.brass_weighted_ejector.no_target": "Ejecting to Adjacent block (No Target was Selected)",
+  "create.brass_weighted_ejector.targeting": "Ejecting to [%1$s,%2$s,%3$s]",
+  "create.brass_weighted_ejector.stack_size": "Ejected Stack Size",
+
   "itemGroup.create_brass_coated": "Create: Brass Coated"
 }
