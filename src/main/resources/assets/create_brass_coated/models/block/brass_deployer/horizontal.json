@@ -28,7 +28,7 @@
 			"from": [1, 2, 2],
 			"to": [15, 14, 12],
 			"faces": {
-				"north": {"uv": [0, 0, 12, 14], "rotation": 270, "texture": "#missing"},
+				"north": {"uv": [0, 0, 12, 14], "rotation": 270, "texture": "#gearbox_top"},
 				"east": {"uv": [2, 4, 14, 14], "rotation": 270, "texture": "#gearbox_top"},
 				"south": {"uv": [14, 1, 2, 15], "rotation": 90, "texture": "#7"},
 				"west": {"uv": [2, 4, 14, 14], "rotation": 90, "texture": "#gearbox_top"}

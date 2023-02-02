@@ -26,7 +26,7 @@ import net.minecraft.world.phys.HitResult;
 import java.util.Arrays;
 import java.util.List;
 
-public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<BrassGearboxTileEntity> {
+public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<GearboxTileEntity> {
 
 	public BrassGearboxBlock(Properties properties) {
 		super(properties);
@@ -77,12 +77,12 @@ public class BrassGearboxBlock extends RotatedPillarKineticBlock implements ITE<
 	}
 
 	@Override
-	public Class<BrassGearboxTileEntity> getTileEntityClass() {
-		return BrassGearboxTileEntity.class;
+	public Class<GearboxTileEntity> getTileEntityClass() {
+		return GearboxTileEntity.class;
 	}
 
 	@Override
-	public BlockEntityType<? extends BrassGearboxTileEntity> getTileEntityType() {
+	public BlockEntityType<? extends GearboxTileEntity> getTileEntityType() {
 		return BrassTiles.BRASS_GEARBOX.get();
 	}
 }

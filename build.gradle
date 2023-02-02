@@ -22,7 +22,7 @@ apply plugin: 'org.parchmentmc.librarian.forgegradle'
 apply plugin: 'org.spongepowered.mixin'
 
 
-version = '0.1'
+version = '0.1.1-1.18.2'
 group = 'com.injir.create_brass_coated' // http://maven.apache.org/guides/mini/guide-naming-conventions.html
 archivesBaseName = 'create_brass_coated'
 

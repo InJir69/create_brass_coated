@@ -1,7 +1,5 @@
 package com.injir.create_brass_coated.blocks;
 
-import com.injir.create_brass_coated.blocks.basin.BrassBasinRenderer;
-import com.injir.create_brass_coated.blocks.basin.BrassBasinTileEntity;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerInstance;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerRenderer;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerTileEntity;
@@ -17,9 +15,6 @@ import com.injir.create_brass_coated.blocks.other.*;
 import com.injir.create_brass_coated.blocks.drill.BrassDrillInstance;
 import com.injir.create_brass_coated.blocks.drill.BrassDrillRenderer;
 import com.injir.create_brass_coated.blocks.drill.BrassDrillTileEntity;
-import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxInstance;
-import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxRenderer;
-import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxTileEntity;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterRenderer;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterTileEntity;
 import com.injir.create_brass_coated.blocks.portable_storage.BrassPSIInstance;
@@ -55,6 +50,9 @@ import com.simibubi.create.content.contraptions.relays.elementary.BracketedKinet
 import com.simibubi.create.content.contraptions.relays.elementary.BracketedKineticTileInstance;
 import com.simibubi.create.content.contraptions.relays.elementary.BracketedKineticTileRenderer;
 import com.simibubi.create.content.contraptions.relays.encased.*;
+import com.simibubi.create.content.contraptions.relays.gearbox.GearboxInstance;
+import com.simibubi.create.content.contraptions.relays.gearbox.GearboxRenderer;
+import com.simibubi.create.content.contraptions.relays.gearbox.GearboxTileEntity;
 import com.simibubi.create.content.contraptions.relays.gearbox.GearshiftTileEntity;
 import com.simibubi.create.content.logistics.block.depot.*;
 import com.tterrag.registrate.util.entry.BlockEntityEntry;
@@ -89,11 +87,11 @@ public class BrassTiles {
             .renderer(() -> BrassSawRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<BrassGearboxTileEntity> BRASS_GEARBOX = REGISTRATE
-            .tileEntity("brass_gearbox", BrassGearboxTileEntity::new)
-            .instance(() -> BrassGearboxInstance::new, false)
+    public static final BlockEntityEntry<GearboxTileEntity> BRASS_GEARBOX = REGISTRATE
+            .tileEntity("brass_gearbox", GearboxTileEntity::new)
+            .instance(() -> GearboxInstance::new, false)
             .validBlocks(BrassBlocks.BRASS_GEARBOX)
-            .renderer(() -> BrassGearboxRenderer::new)
+            .renderer(() -> GearboxRenderer::new)
             .register();
 
     public static final BlockEntityEntry<BrassClutchTileEntity> BRASS_CLUTCH = REGISTRATE
@@ -157,11 +155,11 @@ public class BrassTiles {
             .renderer(() -> BrassEjectorRenderer::new)
             .register();
 
-    public static final BlockEntityEntry<BrassBasinTileEntity> BRASS_BASIN = REGISTRATE
-            .tileEntity("brass_basin", BrassBasinTileEntity::new)
-            .validBlocks(BrassBlocks.BRASS_BASIN)
-            .renderer(() -> BrassBasinRenderer::new)
-            .register();
+    //public static final BlockEntityEntry<BrassBasinTileEntity> BRASS_BASIN = REGISTRATE
+            //.tileEntity("brass_basin", BrassBasinTileEntity::new)
+            //.validBlocks(BrassBlocks.BRASS_BASIN)
+            //.renderer(() -> BrassBasinRenderer::new)
+            //.register();
 
     public static final BlockEntityEntry<BrassAdjustablePulleyTileEntity> ADJUSTABLE_PULLEY = REGISTRATE
             .tileEntity("brass_adjustable_pulley", BrassAdjustablePulleyTileEntity::new)
@@ -172,11 +170,11 @@ public class BrassTiles {
 
     public static final BlockEntityEntry<BrassPortableItemInterfaceTileEntity> PORTABLE_STORAGE_INTERFACE =
             REGISTRATE
-                    .tileEntity("brass_portable_storage_interface", BrassPortableItemInterfaceTileEntity::new)
-                    .instance(() -> BrassPSIInstance::new)
-                    .validBlocks(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
-                    .renderer(() -> BrassPortableStorageInterfaceRenderer::new)
-                    .register();
+            .tileEntity("brass_portable_storage_interface", BrassPortableItemInterfaceTileEntity::new)
+            .instance(() -> BrassPSIInstance::new)
+            .validBlocks(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
+            .renderer(() -> BrassPortableStorageInterfaceRenderer::new)
+            .register();
 
 
 

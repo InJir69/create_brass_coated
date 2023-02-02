@@ -1,5 +1,5 @@
 {
-	"parent": "create:block/gearshift/block",
+	"parent": "create_brass_coated:block/brass_gearshift/block",
     "textures": {
         "0": "create:block/sequenced_gearshift_5",
 		"particle": "create:block/sequenced_gearshift_5"
