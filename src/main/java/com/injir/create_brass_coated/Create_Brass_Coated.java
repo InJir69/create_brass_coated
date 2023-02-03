@@ -37,13 +37,11 @@ public class Create_Brass_Coated
 
     public Create_Brass_Coated(){
         onCtor();
+        BrassPartials.init();
     }
     public static void onCtor() {
-        ModLoadingContext modLoadingContext = ModLoadingContext.get();
-
         IEventBus modEventBus = FMLJavaModLoadingContext.get()
                 .getModEventBus();
-        IEventBus forgeEventBus = MinecraftForge.EVENT_BUS;
 
         BrassBlocks.register();
         BrassTiles.register();
@@ -52,7 +50,6 @@ public class Create_Brass_Coated
 
     public static void init(final FMLCommonSetupEvent event) {
         BrassPackets.registerPackets();
-        BrassPartials.init();
         BrassPonder.register();
         BrassPonder.registerTags();
     }
