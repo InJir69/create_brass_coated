@@ -993,11 +993,16 @@
   "create.tooltip.brass_deployer.punching": "Mode: Attack",
   "create.tooltip.brass_deployer.contains": "Item: %1$s x%2$s",
 
+  "create.hint.full_brass_deployer.title": "Brass Deployer Item Overflow",
+  "create.hint.full_brass_deployer": "It appears this _Brass Deployer_ contains _excess_ _items_ that need to be _extracted._ Use a _hopper,_ _funnel_ or other means to free it from its overflow.",
+
   "create.brass_weighted_ejector.target_set": "Target Selected",
   "create.brass_weighted_ejector.target_not_valid": "Ejecting to Adjacent block (Target was not Valid)",
   "create.brass_weighted_ejector.no_target": "Ejecting to Adjacent block (No Target was Selected)",
   "create.brass_weighted_ejector.targeting": "Ejecting to [%1$s,%2$s,%3$s]",
   "create.brass_weighted_ejector.stack_size": "Ejected Stack Size",
+
+  "_": "Feel free to translate this to your native language!",
 
   "itemGroup.create_brass_coated": "Create: Brass Coated"
 }

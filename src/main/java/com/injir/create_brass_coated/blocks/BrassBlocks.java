@@ -20,10 +20,7 @@ import com.injir.create_brass_coated.blocks.girder.BrassGirderEncasedShaftBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterMovementBehaviour;
 import com.injir.create_brass_coated.blocks.mixer.BrassMechanicalMixerBlock;
-import com.injir.create_brass_coated.blocks.other.BrassAdjustablePulleyBlock;
-import com.injir.create_brass_coated.blocks.other.BrassClutchBlock;
-import com.injir.create_brass_coated.blocks.other.BrassEncasedBeltGenerator;
-import com.injir.create_brass_coated.blocks.other.BrassGearshiftBlock;
+import com.injir.create_brass_coated.blocks.other.*;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughBlock;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughMovementBehaviour;
 import com.injir.create_brass_coated.blocks.portable_storage.BrassPortableStorageInterfaceBlock;
@@ -36,6 +33,9 @@ import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.AllTags;
 import com.simibubi.create.content.contraptions.components.AssemblyOperatorBlockItem;
+import com.simibubi.create.content.contraptions.fluids.pipes.BracketBlock;
+import com.simibubi.create.content.contraptions.fluids.pipes.BracketBlockItem;
+import com.simibubi.create.content.contraptions.fluids.pipes.BracketGenerator;
 import com.simibubi.create.content.contraptions.relays.encased.AdjustablePulleyBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedCTBehaviour;
@@ -55,6 +55,7 @@ import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
 import static com.simibubi.create.AllInteractionBehaviours.interactionBehaviour;
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
 import static com.simibubi.create.AllTags.axeOrPickaxe;
+import static com.simibubi.create.Create.REGISTRATE;
 import static com.simibubi.create.content.logistics.block.display.AllDisplayBehaviours.assignDataBehaviour;
 import static com.simibubi.create.foundation.data.BlockStateGen.axisBlock;
 import static com.simibubi.create.foundation.data.ModelGen.customItemModel;
@@ -103,8 +104,8 @@ public class BrassBlocks {
 			.transform(customItemModel())
 			.register();
 
-	public static final BlockEntry<EncasedBeltBlock> BRASS_ENCASED_CHAIN_DRIVE =
-			BRASS_REGISTRATE.block("brass_encased_chain_drive", EncasedBeltBlock::new)
+	public static final BlockEntry<BrassEncasedBeltBlock> BRASS_ENCASED_CHAIN_DRIVE =
+			BRASS_REGISTRATE.block("brass_encased_chain_drive", BrassEncasedBeltBlock::new)
 					.initialProperties(SharedProperties::stone)
 					.properties(BlockBehaviour.Properties::noOcclusion)
 					.properties(p -> p.color(MaterialColor.PODZOL))
@@ -116,8 +117,8 @@ public class BrassBlocks {
 					.transform(customItemModel())
 					.register();
 
-	public static final BlockEntry<AdjustablePulleyBlock> BRASS_ADJUSTABLE_CHAIN_GEARSHIFT =
-			BRASS_REGISTRATE.block("brass_adjustable_chain_gearshift", AdjustablePulleyBlock::new)
+	public static final BlockEntry<BrassAdjustablePulleyBlock> BRASS_ADJUSTABLE_CHAIN_GEARSHIFT =
+			BRASS_REGISTRATE.block("brass_adjustable_chain_gearshift", BrassAdjustablePulleyBlock::new)
 					.initialProperties(SharedProperties::stone)
 					.properties(BlockBehaviour.Properties::noOcclusion)
 					.properties(p -> p.color(MaterialColor.NETHER))
