@@ -2,6 +2,13 @@ package com.injir.create_brass_coated.blocks;
 
 import com.injir.create_brass_coated.BrassTab;
 import com.injir.create_brass_coated.Create_Brass_Coated;
+import com.injir.create_brass_coated.blocks.bracket.BrassBracketBlock;
+import com.injir.create_brass_coated.blocks.bracket.BrassBracketBlockItem;
+import com.injir.create_brass_coated.blocks.bracket.BrassBracketGenerator;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteBlock;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteGenerator;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteItem;
+import com.injir.create_brass_coated.blocks.chute.BrassSmartChuteBlock;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerBlock;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerMovementBehaviour;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerMovingInteraction;
@@ -39,6 +46,10 @@ import com.simibubi.create.content.contraptions.fluids.pipes.BracketGenerator;
 import com.simibubi.create.content.contraptions.relays.encased.AdjustablePulleyBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedBeltBlock;
 import com.simibubi.create.content.contraptions.relays.encased.EncasedCTBehaviour;
+import com.simibubi.create.content.logistics.block.chute.ChuteBlock;
+import com.simibubi.create.content.logistics.block.chute.ChuteGenerator;
+import com.simibubi.create.content.logistics.block.chute.ChuteItem;
+import com.simibubi.create.content.logistics.block.chute.SmartChuteBlock;
 import com.simibubi.create.content.logistics.block.display.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.BlockStressDefaults;
 import com.simibubi.create.foundation.data.*;
@@ -182,6 +193,27 @@ public class BrassBlocks {
 					.transform(customItemModel())
 					.register();
 
+	public static final BlockEntry<BrassChuteBlock> BRASS_CHUTE = BRASS_REGISTRATE.block("brass_chute", BrassChuteBlock::new)
+			.initialProperties(SharedProperties::softMetal)
+			.properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(pickaxeOnly())
+			.addLayer(() -> RenderType::cutoutMipped)
+			.blockstate(new BrassChuteGenerator()::generate)
+			.item(BrassChuteItem::new)
+			.transform(customItemModel("_", "block"))
+			.register();
+
+	public static final BlockEntry<BrassSmartChuteBlock> SMART_BRASS_CHUTE = BRASS_REGISTRATE.block("smart_brass_chute", BrassSmartChuteBlock::new)
+			.initialProperties(SharedProperties::softMetal)
+			.properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(pickaxeOnly())
+			.blockstate((c, p) -> BlockStateGen.simpleBlock(c, p, AssetLookup.forPowered(c, p)))
+			.item()
+			.transform(customItemModel("_", "block"))
+			.register();
+
 	public static final BlockEntry<BrassMechanicalPressBlock> BRASS_MECHANICAL_PRESS =
 			BRASS_REGISTRATE.block("brass_mechanical_press", BrassMechanicalPressBlock::new)
 					.initialProperties(SharedProperties::stone)
@@ -218,6 +250,13 @@ public class BrassBlocks {
 			//.transform(customItemModel("_", "block"))
 			//.register();
 
+	public static final BlockEntry<BrassBracketBlock> BRASS_BRACKET = BRASS_REGISTRATE.block("brass_bracket", BrassBracketBlock::new)
+			.blockstate(new BrassBracketGenerator("brass")::generate)
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(AllTags.pickaxeOnly())
+			.item(BrassBracketBlockItem::new)
+			.transform(BrassBracketGenerator.itemModel("brass"))
+			.register();
 	public static final BlockEntry<BrassGirderBlock> BRASS_GIRDER = BRASS_REGISTRATE.block("brass_girder", BrassGirderBlock::new)
 			.initialProperties(SharedProperties::softMetal)
 			.blockstate(BrassGirderBlockStateGenerator::blockState)

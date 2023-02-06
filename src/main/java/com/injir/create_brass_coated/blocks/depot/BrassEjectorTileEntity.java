@@ -97,7 +97,7 @@ public class BrassEjectorTileEntity extends KineticTileEntity {
 		super.addBehaviours(behaviours);
 		behaviours.add(depotBehaviour = new BrassDepotBehaviour(this));
 
-		maxStackSize = new ScrollValueBehaviour(Lang.translateDirect("brass_weighted_ejector.stack_size"), this, new BrassEjectorSlot())
+		maxStackSize = new ScrollValueBehaviour(Lang.translateDirect("weighted_ejector.stack_size"), this, new BrassEjectorSlot())
 			.between(0, 64)
 			.withFormatter(i -> i == 0 ? "*" : String.valueOf(i))
 			.onlyActiveWhen(() -> state == State.CHARGED)

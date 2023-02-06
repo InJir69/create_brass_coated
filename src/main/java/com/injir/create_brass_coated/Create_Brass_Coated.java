@@ -3,7 +3,10 @@ package com.injir.create_brass_coated;
 import com.injir.create_brass_coated.blocks.BrassBlocks;
 import com.injir.create_brass_coated.blocks.BrassPartials;
 import com.injir.create_brass_coated.blocks.BrassTiles;
+import com.injir.create_brass_coated.blocks.other.BrassArmInteractionPointTypes;
 import com.injir.create_brass_coated.items.BrassItems;
+import com.simibubi.create.CreateClient;
+import com.simibubi.create.content.logistics.block.mechanicalArm.AllArmInteractionPointTypes;
 import com.simibubi.create.foundation.data.CreateRegistrate;
 import com.tterrag.registrate.util.nullness.NonNullSupplier;
 import net.minecraft.resources.ResourceLocation;
@@ -33,6 +36,7 @@ public class Create_Brass_Coated
         BrassBlocks.register();
         BrassTiles.register();
         BrassItems.register();
+        BrassArmInteractionPointTypes.register();
         modEventBus.addListener(Create_Brass_Coated::init);
     }
 

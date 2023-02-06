@@ -17,7 +17,7 @@ import net.minecraft.world.level.block.Blocks;
 
 public class BrassPonder extends PonderIndex {
 
-	static final PonderRegistrationHelper HELPER = new PonderRegistrationHelper(Create_Brass_Coated.ID);
+	static final PonderRegistrationHelper HELPER = new PonderRegistrationHelper(Create.ID);
 
 	public static final boolean REGISTER_DEBUG_SCENES = false;
 
@@ -73,6 +73,11 @@ public class BrassPonder extends PonderIndex {
 		HELPER.forComponents(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
 				.addStoryBoard("portable_interface/transfer", MovementActorScenes::psiTransfer, PonderTag.CONTRAPTION_ACTOR)
 				.addStoryBoard("portable_interface/redstone", MovementActorScenes::psiRedstone);
+		HELPER.forComponents(BrassBlocks.BRASS_CHUTE)
+				.addStoryBoard("chute/downward", ChuteScenes::downward, PonderTag.LOGISTICS)
+				.addStoryBoard("chute/upward", ChuteScenes::upward);
+		HELPER.forComponents(BrassBlocks.BRASS_CHUTE, BrassBlocks.SMART_BRASS_CHUTE)
+				.addStoryBoard("chute/smart", ChuteScenes::smart);
 
 		// Debug scenes, can be found in game via the Brass Hand
 		if (REGISTER_DEBUG_SCENES)
@@ -106,12 +111,14 @@ public class BrassPonder extends PonderIndex {
 			//.add(BrassBlocks.BRASS_BASIN)
 			.add(BrassBlocks.BRASS_DEPLOYER)
 			.add(BrassBlocks.BRASS_MECHANICAL_SAW)
-			.add(AllBlocks.BLAZE_BURNER);
+			.add(BrassBlocks.BRASS_CHUTE);
 
 		PonderRegistry.TAGS.forTag(PonderTag.LOGISTICS)
 			.add(BrassBlocks.BRASS_DEPOT)
 			.add(BrassBlocks.BRASS_WEIGHTED_EJECTOR)
-			.add(AllBlocks.PORTABLE_STORAGE_INTERFACE);
+			.add(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
+			.add(BrassBlocks.BRASS_CHUTE)
+			.add(BrassBlocks.SMART_BRASS_CHUTE);
 
 		PonderRegistry.TAGS.forTag(PonderTag.DECORATION)
 			.add(BrassBlocks.BRASS_GIRDER);
