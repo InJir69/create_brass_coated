@@ -2,6 +2,13 @@ package com.injir.create_brass_coated.blocks;
 
 import com.injir.create_brass_coated.BrassTab;
 import com.injir.create_brass_coated.Create_Brass_Coated;
+import com.injir.create_brass_coated.blocks.bracket.BrassBracketBlock;
+import com.injir.create_brass_coated.blocks.bracket.BrassBracketBlockItem;
+import com.injir.create_brass_coated.blocks.bracket.BrassBracketGenerator;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteBlock;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteGenerator;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteItem;
+import com.injir.create_brass_coated.blocks.chute.BrassSmartChuteBlock;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerBlock;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerMovementBehaviour;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerMovingInteraction;
@@ -126,8 +133,8 @@ public class BrassBlocks {
 			.transform(customItemModel())
 			.register();
 
-	public static final BlockEntry<EncasedBeltBlock> BRASS_ENCASED_CHAIN_DRIVE =
-			BRASS_REGISTRATE.block("brass_encased_chain_drive", EncasedBeltBlock::new)
+	public static final BlockEntry<BrassEncasedBeltBlock> BRASS_ENCASED_CHAIN_DRIVE =
+			BRASS_REGISTRATE.block("brass_encased_chain_drive", BrassEncasedBeltBlock::new)
 					.initialProperties(SharedProperties::stone)
 					.properties(BlockBehaviour.Properties::noOcclusion)
 					.properties(p -> p.color(MaterialColor.PODZOL))
@@ -139,8 +146,8 @@ public class BrassBlocks {
 					.transform(customItemModel())
 					.register();
 
-	public static final BlockEntry<AdjustablePulleyBlock> BRASS_ADJUSTABLE_CHAIN_GEARSHIFT =
-			BRASS_REGISTRATE.block("brass_adjustable_chain_gearshift", AdjustablePulleyBlock::new)
+	public static final BlockEntry<BrassAdjustablePulleyBlock> BRASS_ADJUSTABLE_CHAIN_GEARSHIFT =
+			BRASS_REGISTRATE.block("brass_adjustable_chain_gearshift", BrassAdjustablePulleyBlock::new)
 					.initialProperties(SharedProperties::stone)
 					.properties(BlockBehaviour.Properties::noOcclusion)
 					.properties(p -> p.color(MaterialColor.NETHER))
@@ -204,6 +211,27 @@ public class BrassBlocks {
 					.transform(customItemModel())
 					.register();
 
+	public static final BlockEntry<BrassChuteBlock> BRASS_CHUTE = BRASS_REGISTRATE.block("brass_chute", BrassChuteBlock::new)
+			.initialProperties(SharedProperties::softMetal)
+			.properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(pickaxeOnly())
+			.addLayer(() -> RenderType::cutoutMipped)
+			.blockstate(new BrassChuteGenerator()::generate)
+			.item(BrassChuteItem::new)
+			.transform(customItemModel("_", "block"))
+			.register();
+
+	public static final BlockEntry<BrassSmartChuteBlock> SMART_BRASS_CHUTE = BRASS_REGISTRATE.block("smart_brass_chute", BrassSmartChuteBlock::new)
+			.initialProperties(SharedProperties::softMetal)
+			.properties(p -> p.color(MaterialColor.COLOR_ORANGE))
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(pickaxeOnly())
+			.blockstate((c, p) -> BlockStateGen.simpleBlock(c, p, AssetLookup.forPowered(c, p)))
+			.item()
+			.transform(customItemModel("_", "block"))
+			.register();
+
 	public static final BlockEntry<BrassMechanicalPressBlock> BRASS_MECHANICAL_PRESS =
 			BRASS_REGISTRATE.block("brass_mechanical_press", BrassMechanicalPressBlock::new)
 					.initialProperties(SharedProperties::stone)
@@ -239,6 +267,14 @@ public class BrassBlocks {
 			//.item()
 			//.transform(customItemModel("_", "block"))
 			//.register();
+
+	public static final BlockEntry<BrassBracketBlock> BRASS_BRACKET = BRASS_REGISTRATE.block("brass_bracket", BrassBracketBlock::new)
+			.blockstate(new BrassBracketGenerator("brass")::generate)
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(AllTags.pickaxeOnly())
+			.item(BrassBracketBlockItem::new)
+			.transform(BrassBracketGenerator.itemModel("brass"))
+			.register();
 
 	public static final BlockEntry<BrassGirderBlock> BRASS_GIRDER = BRASS_REGISTRATE.block("brass_girder", BrassGirderBlock::new)
 			.initialProperties(SharedProperties::softMetal)

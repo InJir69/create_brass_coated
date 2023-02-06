@@ -460,21 +460,21 @@ public class BrassDeployerTileEntity extends KineticTileEntity {
 			return false;
 		if (overflowItems.isEmpty())
 			return false;
-		TooltipHelper.addHint(tooltip, "hint.full_brass_deployer");
+		TooltipHelper.addHint(tooltip, "hint.full_deployer");
 		return true;
 	}
 
 	@Override
 	public boolean addToGoggleTooltip(List<Component> tooltip, boolean isPlayerSneaking) {
-		Lang.translate("tooltip.brass_deployer.header")
+		Lang.translate("tooltip.deployer.header")
 			.forGoggles(tooltip);
 
-		Lang.translate("tooltip.brass_deployer." + (mode == Mode.USE ? "using" : "punching"))
+		Lang.translate("tooltip.deployer." + (mode == Mode.USE ? "using" : "punching"))
 			.style(ChatFormatting.YELLOW)
 			.forGoggles(tooltip);
 
 		if (!heldItem.isEmpty())
-			Lang.translate("tooltip.brass_deployer.contains",
+			Lang.translate("tooltip.deployer.contains",
 				Components.translatable(heldItem.getDescriptionId()).getString(), heldItem.getCount())
 				.style(ChatFormatting.GREEN)
 				.forGoggles(tooltip);

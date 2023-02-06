@@ -1,5 +1,10 @@
 package com.injir.create_brass_coated.blocks;
 
+import com.injir.create_brass_coated.Create_Brass_Coated;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteRenderer;
+import com.injir.create_brass_coated.blocks.chute.BrassChuteTileEntity;
+import com.injir.create_brass_coated.blocks.chute.BrassSmartChuteRenderer;
+import com.injir.create_brass_coated.blocks.chute.BrassSmartChuteTileEntity;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerInstance;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerRenderer;
 import com.injir.create_brass_coated.blocks.deployer.BrassDeployerTileEntity;
@@ -175,6 +180,18 @@ public class BrassTiles {
                     .validBlocks(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE)
                     .renderer(() -> BrassPortableStorageInterfaceRenderer::new)
                     .register();
+
+    public static final BlockEntityEntry<BrassChuteTileEntity> BRASS_CHUTE = REGISTRATE
+            .tileEntity("brass_chute", BrassChuteTileEntity::new)
+            .validBlocks(BrassBlocks.BRASS_CHUTE)
+            .renderer(() -> BrassChuteRenderer::new)
+            .register();
+
+    public static final BlockEntityEntry<BrassSmartChuteTileEntity> SMART_BRASS_CHUTE = REGISTRATE
+            .tileEntity("smart_brass_chute", BrassSmartChuteTileEntity::new)
+            .validBlocks(BrassBlocks.SMART_BRASS_CHUTE)
+            .renderer(() -> BrassSmartChuteRenderer::new)
+            .register();
 
 
 

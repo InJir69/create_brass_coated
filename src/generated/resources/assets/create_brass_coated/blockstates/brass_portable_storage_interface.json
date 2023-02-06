@@ -4,8 +4,10 @@
       "model": "create_brass_coated:block/brass_portable_storage_interface/block",
       "x": 180
     },
-    "facing=up": {
-      "model": "create_brass_coated:block/brass_portable_storage_interface/block"
+    "facing=east": {
+      "model": "create_brass_coated:block/brass_portable_storage_interface/block",
+      "x": 90,
+      "y": 90
     },
     "facing=north": {
       "model": "create_brass_coated:block/brass_portable_storage_interface/block",
@@ -16,15 +18,13 @@
       "x": 90,
       "y": 180
     },
+    "facing=up": {
+      "model": "create_brass_coated:block/brass_portable_storage_interface/block"
+    },
     "facing=west": {
       "model": "create_brass_coated:block/brass_portable_storage_interface/block",
       "x": 90,
       "y": 270
-    },
-    "facing=east": {
-      "model": "create_brass_coated:block/brass_portable_storage_interface/block",
-      "x": 90,
-      "y": 90
     }
   }
 }

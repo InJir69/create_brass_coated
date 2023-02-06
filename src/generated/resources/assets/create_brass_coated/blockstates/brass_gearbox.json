@@ -2,9 +2,9 @@
   "variants": {
     "axis=x": {
       "model": "create_brass_coated:block/brass_gearbox/block",
+      "uvlock": true,
       "x": 90,
-      "y": 90,
-      "uvlock": true
+      "y": 90
     },
     "axis=y": {
       "model": "create_brass_coated:block/brass_gearbox/block",
@@ -12,9 +12,9 @@
     },
     "axis=z": {
       "model": "create_brass_coated:block/brass_gearbox/block",
+      "uvlock": true,
       "x": 90,
-      "y": 180,
-      "uvlock": true
+      "y": 180
     }
   }
 }

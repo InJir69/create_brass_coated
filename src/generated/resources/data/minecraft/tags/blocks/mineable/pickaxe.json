@@ -1,5 +1,4 @@
 {
-  "replace": false,
   "values": [
     "create_brass_coated:brass_gearbox",
     "create_brass_coated:brass_clutch",
@@ -10,8 +9,11 @@
     "create_brass_coated:brass_nozzle",
     "create_brass_coated:brass_depot",
     "create_brass_coated:brass_weighted_ejector",
+    "create_brass_coated:brass_chute",
+    "create_brass_coated:smart_brass_chute",
     "create_brass_coated:brass_mechanical_press",
     "create_brass_coated:brass_mechanical_mixer",
+    "create_brass_coated:brass_bracket",
     "create_brass_coated:brass_girder",
     "create_brass_coated:brass_girder_encased_shaft",
     "create_brass_coated:brass_mechanical_drill",

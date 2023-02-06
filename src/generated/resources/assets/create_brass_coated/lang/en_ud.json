@@ -1,5 +1,7 @@
 {
   "block.create_brass_coated.brass_adjustable_chain_gearshift": "\u0287\u025F\u0131\u0265s\u0279\u0250\u01DD\u2141 u\u0131\u0250\u0265\u0186 \u01DD\u05DFq\u0250\u0287sn\u0638p\u2C6F ss\u0250\u0279\u15FA",
+  "block.create_brass_coated.brass_bracket": "\u0287\u01DD\u029E\u0254\u0250\u0279\u15FA ss\u0250\u0279\u15FA",
+  "block.create_brass_coated.brass_chute": "\u01DD\u0287n\u0265\u0186 ss\u0250\u0279\u15FA",
   "block.create_brass_coated.brass_clutch": "\u0265\u0254\u0287n\u05DF\u0186 ss\u0250\u0279\u15FA",
   "block.create_brass_coated.brass_deployer": "\u0279\u01DD\u028Eo\u05DFd\u01DD\u15E1 ss\u0250\u0279\u15FA",
   "block.create_brass_coated.brass_depot": "\u0287od\u01DD\u15E1 ss\u0250\u0279\u15FA",
@@ -18,6 +20,7 @@
   "block.create_brass_coated.brass_nozzle": "\u01DD\u05DFzzoN ss\u0250\u0279\u15FA",
   "block.create_brass_coated.brass_portable_storage_interface": "\u01DD\u0254\u0250\u025F\u0279\u01DD\u0287uI \u01DDb\u0250\u0279o\u0287S \u01DD\u05DFq\u0250\u0287\u0279o\u0500 ss\u0250\u0279\u15FA",
   "block.create_brass_coated.brass_weighted_ejector": "\u0279o\u0287\u0254\u01DD\u0638\u018E p\u01DD\u0287\u0265b\u0131\u01DDM ss\u0250\u0279\u15FA",
+  "block.create_brass_coated.smart_brass_chute": "\u01DD\u0287n\u0265\u0186 ss\u0250\u0279\u15FA \u0287\u0279\u0250\u026FS",
   "item.create_brass_coated.vertical_brass_gearbox": "xoq\u0279\u0250\u01DD\u2141 ss\u0250\u0279\u15FA \u05DF\u0250\u0254\u0131\u0287\u0279\u01DD\u039B",
   "itemGroup.create_brass_coated": "p\u01DD\u0287\u0250o\u0186 ss\u0250\u0279\u15FA :\u01DD\u0287\u0250\u01DD\u0279\u0186"
 }

@@ -61,7 +61,7 @@ public class BrassEjectorTargetHandler {
 		if (player == null || player.isSpectator() || !player.isShiftKeyDown())
 			return;
 
-		String key = "brass_weighted_ejector.target_set";
+		String key = "weighted_ejector.target_set";
 		ChatFormatting colour = ChatFormatting.GOLD;
 		player.displayClientMessage(Lang.translateDirect(key)
 			.withStyle(colour), true);
@@ -94,11 +94,11 @@ public class BrassEjectorTargetHandler {
 		int v = 0;
 
 		LocalPlayer player = Minecraft.getInstance().player;
-		String key = "brass_weighted_ejector.target_not_valid";
+		String key = "weighted_ejector.target_not_valid";
 		ChatFormatting colour = ChatFormatting.WHITE;
 
 		if (currentSelection == null)
-			key = "brass_weighted_ejector.no_target";
+			key = "weighted_ejector.no_target";
 
 		Direction validTargetDirection = getValidTargetDirection(pos);
 		if (validTargetDirection == null) {
@@ -109,7 +109,7 @@ public class BrassEjectorTargetHandler {
 			return;
 		}
 
-		key = "brass_weighted_ejector.targeting";
+		key = "weighted_ejector.targeting";
 		colour = ChatFormatting.GREEN;
 
 		player.displayClientMessage(

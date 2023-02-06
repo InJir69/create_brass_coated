@@ -46,7 +46,8 @@ public class Create_Brass_Coated
         BrassBlocks.register();
         BrassTiles.register();
         BrassItems.register();
-        modEventBus.addListener(Create_Brass_Coated::init);}
+        modEventBus.addListener(Create_Brass_Coated::init);
+    }
 
     public static void init(final FMLCommonSetupEvent event) {
         BrassPackets.registerPackets();
