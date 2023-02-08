@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.brass;
 
 import com.injir.create_brass_coated.blocks.BrassBlocks;
 import com.simibubi.create.AllBlocks;
@@ -49,8 +49,6 @@ import net.minecraft.world.phys.BlockHitResult;
 import net.minecraft.world.phys.shapes.CollisionContext;
 import net.minecraft.world.phys.shapes.Shapes;
 import net.minecraft.world.phys.shapes.VoxelShape;
-
-import java.util.Random;
 
 import static net.minecraft.world.level.block.FaceAttachedHorizontalDirectionalBlock.FACE;
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;

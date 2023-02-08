@@ -9,7 +9,7 @@
   "block.create_brass_coated.brass_gearbox": "Латунная коробка передач",
   "block.create_brass_coated.brass_gearshift": "Латунная реверсивная коробка передач",
   "block.create_brass_coated.brass_girder": "Латунная балка",
-  "block.create_brass_coated.brass_girder_encased_shaft": "BВал в латунной балке",
+  "block.create_brass_coated.brass_girder_encased_shaft": "Bал в латунной балке",
   "block.create_brass_coated.brass_mechanical_drill": "Латунная механическая дрель",
   "block.create_brass_coated.brass_mechanical_harvester": "Латунный механический комбайн",
   "block.create_brass_coated.brass_mechanical_mixer": "Латунный механический смешиватель",
@@ -21,6 +21,8 @@
   "block.create_brass_coated.brass_weighted_ejector": "Латунная весовая катапульта",
   "block.create_brass_coated.brass_chute": "Латунный Жёлоб",
   "block.create_brass_coated.smart_brass_chute": "Умный латунный жёлоб",
+  "block.create_brass_coated.copper_bracket": "Медная балка",
+  "block.create_brass_coated.copper_girder": "Вал в медной балке",
   "_": "Credits: InJir",
   
   "item.create_brass_coated.vertical_brass_gearbox": "Латунная вертикальная коробка передач"

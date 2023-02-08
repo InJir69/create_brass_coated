@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.brass;
 
 import com.injir.create_brass_coated.blocks.BrassPartials;
 import com.simibubi.create.foundation.block.connected.CTModel;
@@ -14,12 +14,10 @@ import net.minecraft.world.level.block.state.BlockState;
 import net.minecraftforge.client.model.data.ModelData;
 import net.minecraftforge.client.model.data.ModelData.Builder;
 import net.minecraftforge.client.model.data.ModelProperty;
-import net.minecraftforge.client.model.data.ModelProperty;
 
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
-import java.util.Random;
 
 public class BrassConnectedGirderModel extends CTModel {
 

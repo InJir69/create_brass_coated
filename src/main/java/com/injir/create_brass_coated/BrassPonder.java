@@ -122,7 +122,8 @@ public class BrassPonder extends PonderIndex {
 				.add(BrassBlocks.SMART_BRASS_CHUTE);
 
 		PonderRegistry.TAGS.forTag(PonderTag.DECORATION)
-			.add(BrassBlocks.BRASS_GIRDER);
+			.add(BrassBlocks.BRASS_GIRDER)
+			.add(BrassBlocks.COPPER_GIRDER);
 
 		PonderRegistry.TAGS.forTag(PonderTag.CONTRAPTION_ACTOR)
 			.add(BrassBlocks.BRASS_MECHANICAL_HARVESTER)

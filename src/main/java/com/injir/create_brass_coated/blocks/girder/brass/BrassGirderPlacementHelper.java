@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.brass;
 
 import com.google.common.base.Predicates;
 import com.injir.create_brass_coated.blocks.BrassBlocks;

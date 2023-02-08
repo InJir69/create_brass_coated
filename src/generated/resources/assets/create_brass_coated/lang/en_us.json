@@ -20,6 +20,9 @@
   "block.create_brass_coated.brass_nozzle": "Brass Nozzle",
   "block.create_brass_coated.brass_portable_storage_interface": "Brass Portable Storage Interface",
   "block.create_brass_coated.brass_weighted_ejector": "Brass Weighted Ejector",
+  "block.create_brass_coated.copper_bracket": "Copper Bracket",
+  "block.create_brass_coated.copper_girder": "Copper Girder",
+  "block.create_brass_coated.copper_girder_encased_shaft": "Copper Girder Encased Shaft",
   "block.create_brass_coated.smart_brass_chute": "Smart Brass Chute",
   "item.create_brass_coated.vertical_brass_gearbox": "Vertical Brass Gearbox",
   "itemGroup.create_brass_coated": "Create: Brass Coated"

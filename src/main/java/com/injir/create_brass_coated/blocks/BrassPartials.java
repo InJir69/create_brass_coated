@@ -30,10 +30,13 @@ public class BrassPartials {
 			;
 
 	public static final Map<Direction, PartialModel> BRASS_GIRDER_BRACKETS = new EnumMap<>(Direction.class);
+	public static final Map<Direction, PartialModel> COPPER_GIRDER_BRACKETS = new EnumMap<>(Direction.class);
 
 	static {
 		for (Direction d : Iterate.horizontalDirections)
 			BRASS_GIRDER_BRACKETS.put(d, block("brass_girder/bracket_" + Lang.asId(d.name())));
+		for (Direction d : Iterate.horizontalDirections)
+			COPPER_GIRDER_BRACKETS.put(d, block("copper_girder/bracket_" + Lang.asId(d.name())));
 	}
 	private static PartialModel block(String path) {
 		return new PartialModel(new ResourceLocation(Create_Brass_Coated.ID, "block/" + path));

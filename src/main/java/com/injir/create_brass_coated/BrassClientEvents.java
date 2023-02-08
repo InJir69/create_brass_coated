@@ -1,13 +1,11 @@
 package com.injir.create_brass_coated;
 
 import com.injir.create_brass_coated.blocks.depot.BrassEjectorTargetHandler;
-import com.injir.create_brass_coated.blocks.girder.BrassGirderWrenchBehavior;
-import com.simibubi.create.Create;
+import com.injir.create_brass_coated.blocks.girder.brass.BrassGirderWrenchBehavior;
+import com.injir.create_brass_coated.blocks.girder.copper.CopperGirderWrenchBehavior;
 import com.simibubi.create.content.contraptions.components.fan.AirCurrent;
 import com.simibubi.create.content.contraptions.components.structureMovement.interaction.controls.ControlsHandler;
 import com.simibubi.create.content.contraptions.components.turntable.TurntableHandler;
-import com.simibubi.create.content.curiosities.girder.GirderWrenchBehavior;
-import com.simibubi.create.content.logistics.block.depot.EjectorTargetHandler;
 import com.simibubi.create.content.logistics.item.LinkedControllerClientHandler;
 import net.minecraft.client.Minecraft;
 import net.minecraft.world.level.Level;
@@ -31,10 +29,8 @@ public class BrassClientEvents {
 
         Level world = Minecraft.getInstance().level;
         if (event.phase == TickEvent.Phase.START) {
-            LinkedControllerClientHandler.tick();
-            ControlsHandler.tick();
             BrassGirderWrenchBehavior.tick();
-            AirCurrent.tickClientPlayerSounds();
+            CopperGirderWrenchBehavior.tick();
             return;
         }
         BrassEjectorTargetHandler.tick();

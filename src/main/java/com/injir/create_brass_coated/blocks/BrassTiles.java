@@ -116,7 +116,7 @@ public class BrassTiles {
     public static final BlockEntityEntry<KineticTileEntity> BRASS_ENCASED_CHAIN_DRIVE = REGISTRATE
             .tileEntity("brass_encased_chain_drive", KineticTileEntity::new)
             .instance(() -> BrassShaftInstance::new, false)
-            .validBlocks(BrassBlocks.BRASS_ENCASED_CHAIN_DRIVE, BrassBlocks.BRASS_GIRDER_ENCASED_SHAFT)
+            .validBlocks(BrassBlocks.BRASS_ENCASED_CHAIN_DRIVE, BrassBlocks.BRASS_GIRDER_ENCASED_SHAFT, BrassBlocks.COPPER_GIRDER_ENCASED_SHAFT)
             .renderer(() -> BrassShaftRenderer::new)
             .register();
 

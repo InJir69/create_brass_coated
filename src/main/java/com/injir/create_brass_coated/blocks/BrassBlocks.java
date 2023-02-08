@@ -17,10 +17,14 @@ import com.injir.create_brass_coated.blocks.depot.BrassEjectorBlock;
 import com.injir.create_brass_coated.blocks.depot.BrassEjectorItem;
 import com.injir.create_brass_coated.blocks.fan.BrassEncasedFanBlock;
 import com.injir.create_brass_coated.blocks.fan.BrassNozzleBlock;
-import com.injir.create_brass_coated.blocks.girder.BrassConnectedGirderModel;
-import com.injir.create_brass_coated.blocks.girder.BrassGirderBlock;
-import com.injir.create_brass_coated.blocks.girder.BrassGirderBlockStateGenerator;
-import com.injir.create_brass_coated.blocks.girder.BrassGirderEncasedShaftBlock;
+import com.injir.create_brass_coated.blocks.girder.brass.BrassConnectedGirderModel;
+import com.injir.create_brass_coated.blocks.girder.brass.BrassGirderBlock;
+import com.injir.create_brass_coated.blocks.girder.brass.BrassGirderBlockStateGenerator;
+import com.injir.create_brass_coated.blocks.girder.brass.BrassGirderEncasedShaftBlock;
+import com.injir.create_brass_coated.blocks.girder.copper.CopperConnectedGirderModel;
+import com.injir.create_brass_coated.blocks.girder.copper.CopperGirderBlock;
+import com.injir.create_brass_coated.blocks.girder.copper.CopperGirderBlockStateGenerator;
+import com.injir.create_brass_coated.blocks.girder.copper.CopperGirderEncasedShaftBlock;
 import com.injir.create_brass_coated.blocks.mixer.BrassMechanicalMixerBlock;
 import com.injir.create_brass_coated.blocks.other.*;
 import com.injir.create_brass_coated.blocks.drill.BrassDrillBlock;
@@ -39,35 +43,8 @@ import com.injir.create_brass_coated.blocks.saw.BrassSawMovementBehaviour;
 import com.simibubi.create.AllBlocks;
 import com.simibubi.create.AllSpriteShifts;
 import com.simibubi.create.AllTags;
-import com.simibubi.create.Create;
-import com.simibubi.create.content.AllSections;
 import com.simibubi.create.content.contraptions.components.AssemblyOperatorBlockItem;
-import com.simibubi.create.content.contraptions.components.actors.PloughBlock;
-import com.simibubi.create.content.contraptions.components.actors.PloughMovementBehaviour;
-import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceBlock;
-import com.simibubi.create.content.contraptions.components.actors.PortableStorageInterfaceMovement;
-import com.simibubi.create.content.contraptions.components.deployer.DeployerBlock;
-import com.simibubi.create.content.contraptions.components.deployer.DeployerMovementBehaviour;
-import com.simibubi.create.content.contraptions.components.deployer.DeployerMovingInteraction;
-import com.simibubi.create.content.contraptions.components.fan.EncasedFanBlock;
-import com.simibubi.create.content.contraptions.components.fan.NozzleBlock;
-import com.simibubi.create.content.contraptions.components.mixer.MechanicalMixerBlock;
-import com.simibubi.create.content.contraptions.components.press.MechanicalPressBlock;
-import com.simibubi.create.content.contraptions.components.structureMovement.piston.MechanicalPistonBlock;
-import com.simibubi.create.content.contraptions.fluids.pipes.BracketBlock;
-import com.simibubi.create.content.contraptions.fluids.pipes.BracketBlockItem;
-import com.simibubi.create.content.contraptions.fluids.pipes.BracketGenerator;
-import com.simibubi.create.content.contraptions.processing.BasinBlock;
-import com.simibubi.create.content.contraptions.processing.BasinGenerator;
-import com.simibubi.create.content.contraptions.processing.BasinMovementBehaviour;
 import com.simibubi.create.content.contraptions.relays.encased.*;
-import com.simibubi.create.content.curiosities.girder.ConnectedGirderModel;
-import com.simibubi.create.content.curiosities.girder.GirderBlock;
-import com.simibubi.create.content.curiosities.girder.GirderBlockStateGenerator;
-import com.simibubi.create.content.curiosities.girder.GirderEncasedShaftBlock;
-import com.simibubi.create.content.logistics.block.depot.DepotBlock;
-import com.simibubi.create.content.logistics.block.depot.EjectorBlock;
-import com.simibubi.create.content.logistics.block.depot.EjectorItem;
 import com.simibubi.create.content.logistics.block.display.source.ItemNameDisplaySource;
 import com.simibubi.create.foundation.block.BlockStressDefaults;
 import com.simibubi.create.foundation.data.*;
@@ -76,7 +53,6 @@ import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
-import net.minecraft.world.level.block.state.properties.PistonType;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
@@ -276,6 +252,15 @@ public class BrassBlocks {
 			.transform(BrassBracketGenerator.itemModel("brass"))
 			.register();
 
+	public static final BlockEntry<BrassBracketBlock> COPPER_BRACKET = BRASS_REGISTRATE.block("copper_bracket", BrassBracketBlock::new)
+			.blockstate(new BrassBracketGenerator("copper")::generate)
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(AllTags.pickaxeOnly())
+			.item(BrassBracketBlockItem::new)
+			.transform(BrassBracketGenerator.itemModel("copper"))
+			.register();
+
+
 	public static final BlockEntry<BrassGirderBlock> BRASS_GIRDER = BRASS_REGISTRATE.block("brass_girder", BrassGirderBlock::new)
 			.initialProperties(SharedProperties::softMetal)
 			.blockstate(BrassGirderBlockStateGenerator::blockState)
@@ -283,6 +268,17 @@ public class BrassBlocks {
 			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
 			.transform(pickaxeOnly())
 			.onRegister(CreateRegistrate.blockModel(() -> BrassConnectedGirderModel::new))
+			.item()
+			.transform(customItemModel())
+			.register();
+
+	public static final BlockEntry<CopperGirderBlock> COPPER_GIRDER = BRASS_REGISTRATE.block("copper_girder", CopperGirderBlock::new)
+			.initialProperties(SharedProperties::softMetal)
+			.blockstate(CopperGirderBlockStateGenerator::blockState)
+			.properties(p -> p.color(MaterialColor.COLOR_PINK))
+			.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+			.transform(pickaxeOnly())
+			.onRegister(CreateRegistrate.blockModel(() -> CopperConnectedGirderModel::new))
 			.item()
 			.transform(customItemModel())
 			.register();
@@ -299,6 +295,20 @@ public class BrassBlocks {
 									.setRolls(ConstantValue.exactly(1.0F))
 									.add(LootItem.lootTableItem(AllBlocks.SHAFT.get()))))))
 					.onRegister(CreateRegistrate.blockModel(() -> BrassConnectedGirderModel::new))
+					.register();
+
+	public static final BlockEntry<CopperGirderEncasedShaftBlock> COPPER_GIRDER_ENCASED_SHAFT =
+			BRASS_REGISTRATE.block("copper_girder_encased_shaft", CopperGirderEncasedShaftBlock::new)
+					.initialProperties(SharedProperties::softMetal)
+					.blockstate(CopperGirderBlockStateGenerator::blockStateWithShaft)
+					.properties(p -> p.color(MaterialColor.COLOR_PINK))
+					.properties(p -> p.sound(SoundType.NETHERITE_BLOCK))
+					.transform(pickaxeOnly())
+					.loot((p, b) -> p.add(b, RegistrateBlockLootTables.createSingleItemTable(COPPER_GIRDER.get())
+							.withPool(RegistrateBlockLootTables.applyExplosionCondition(AllBlocks.SHAFT.get(), LootPool.lootPool()
+									.setRolls(ConstantValue.exactly(1.0F))
+									.add(LootItem.lootTableItem(AllBlocks.SHAFT.get()))))))
+					.onRegister(CreateRegistrate.blockModel(() -> CopperConnectedGirderModel::new))
 					.register();
 
 	public static final BlockEntry<BrassDrillBlock> BRASS_MECHANICAL_DRILL = BRASS_REGISTRATE.block("brass_mechanical_drill", BrassDrillBlock::new)
