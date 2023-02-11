@@ -1,9 +1,6 @@
 package com.injir.create_brass_coated.mixins;
 
 import com.injir.create_brass_coated.blocks.BrassBlocks;
-import com.injir.create_brass_coated.blocks.girder.BrassGirderBlock;
-import com.injir.create_brass_coated.blocks.girder.BrassGirderEncasedShaftBlock;
-import com.simibubi.create.AllBlocks;
 import com.simibubi.create.content.contraptions.base.KineticTileEntity;
 import com.simibubi.create.content.contraptions.relays.elementary.ShaftBlock;
 import com.simibubi.create.content.curiosities.girder.GirderEncasedShaftBlock;

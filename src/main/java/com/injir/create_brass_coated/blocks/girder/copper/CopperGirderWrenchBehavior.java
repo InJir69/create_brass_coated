@@ -1,6 +1,5 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.copper;
 
-import com.injir.create_brass_coated.Create_Brass_Coated;
 import com.injir.create_brass_coated.blocks.BrassBlocks;
 import com.simibubi.create.AllItems;
 import com.simibubi.create.CreateClient;
@@ -30,7 +29,7 @@ import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 
-public class BrassGirderWrenchBehavior {
+public class CopperGirderWrenchBehavior {
 
 	@OnlyIn(Dist.CLIENT)
 	public static void tick() {
@@ -46,7 +45,7 @@ public class BrassGirderWrenchBehavior {
 		if (player.isSteppingCarefully())
 			return;
 
-		if (!BrassBlocks.BRASS_GIRDER.has(world.getBlockState(pos)))
+		if (!BrassBlocks.COPPER_GIRDER.has(world.getBlockState(pos)))
 			return;
 
 		if (!AllItems.WRENCH.isIn(heldItem))
@@ -90,7 +89,7 @@ public class BrassGirderWrenchBehavior {
 				.getNormal())
 				.scale(0.1 * normalMultiplier));
 
-		CreateClient.OUTLINER.showAABB("brass_girderWrench", new AABB(corner1, corner2))
+		CreateClient.OUTLINER.showAABB("copper_girderWrench", new AABB(corner1, corner2))
 			.lineWidth(1 / 32f)
 			.colored(new Color(127, 127, 127));
 	}
@@ -120,29 +119,29 @@ public class BrassGirderWrenchBehavior {
 	public static List<Pair<Direction, Action>> getValidDirections(BlockGetter level, BlockPos pos) {
 		BlockState blockState = level.getBlockState(pos);
 
-		if (!BrassBlocks.BRASS_GIRDER.has(blockState))
+		if (!BrassBlocks.COPPER_GIRDER.has(blockState))
 			return Collections.emptyList();
 
 		return Arrays.stream(Iterate.directions)
 			.<Pair<Direction, Action>>mapMulti((direction, consumer) -> {
 				BlockState other = level.getBlockState(pos.relative(direction));
 
-				if (!blockState.getValue(BrassGirderBlock.X) && !blockState.getValue(BrassGirderBlock.Z))
+				if (!blockState.getValue(CopperGirderBlock.X) && !blockState.getValue(CopperGirderBlock.Z))
 					return;
 
 				// up and down
 				if (direction.getAxis() == Axis.Y) {
 					// no other girder in target dir
-					if (!BrassBlocks.BRASS_GIRDER.has(other)) {
-						if (!blockState.getValue(BrassGirderBlock.X) ^ !blockState.getValue(BrassGirderBlock.Z))
+					if (!BrassBlocks.COPPER_GIRDER.has(other)) {
+						if (!blockState.getValue(CopperGirderBlock.X) ^ !blockState.getValue(CopperGirderBlock.Z))
 							consumer.accept(Pair.of(direction, Action.SINGLE));
 						return;
 					}
 					// this girder is a pole or cross
-					if (blockState.getValue(BrassGirderBlock.X) == blockState.getValue(BrassGirderBlock.Z))
+					if (blockState.getValue(CopperGirderBlock.X) == blockState.getValue(CopperGirderBlock.Z))
 						return;
 					// other girder is a pole or cross
-					if (other.getValue(BrassGirderBlock.X) == other.getValue(BrassGirderBlock.Z))
+					if (other.getValue(CopperGirderBlock.X) == other.getValue(CopperGirderBlock.Z))
 						return;
 					// toggle up/down connection for both
 					consumer.accept(Pair.of(direction, Action.PAIR));
@@ -163,7 +162,7 @@ public class BrassGirderWrenchBehavior {
 			return false;
 		if (level.isClientSide)
 			return true;
-		if (!state.getValue(BrassGirderBlock.X) && !state.getValue(BrassGirderBlock.Z))
+		if (!state.getValue(CopperGirderBlock.X) && !state.getValue(CopperGirderBlock.Z))
 			return false;
 
 		Direction dir = dirPair.getFirst();
@@ -172,16 +171,16 @@ public class BrassGirderWrenchBehavior {
 		BlockState other = level.getBlockState(otherPos);
 
 		if (dir == Direction.UP) {
-			level.setBlock(pos, postProcess(state.cycle(BrassGirderBlock.TOP)), 2 | 16);
-			if (dirPair.getSecond() == Action.PAIR && BrassBlocks.BRASS_GIRDER.has(other))
-				level.setBlock(otherPos, postProcess(other.cycle(BrassGirderBlock.BOTTOM)), 2 | 16);
+			level.setBlock(pos, postProcess(state.cycle(CopperGirderBlock.TOP)), 2 | 16);
+			if (dirPair.getSecond() == Action.PAIR && BrassBlocks.COPPER_GIRDER.has(other))
+				level.setBlock(otherPos, postProcess(other.cycle(CopperGirderBlock.BOTTOM)), 2 | 16);
 			return true;
 		}
 
 		if (dir == Direction.DOWN) {
-			level.setBlock(pos, postProcess(state.cycle(BrassGirderBlock.BOTTOM)), 2 | 16);
-			if (dirPair.getSecond() == Action.PAIR && BrassBlocks.BRASS_GIRDER.has(other))
-				level.setBlock(otherPos, postProcess(other.cycle(BrassGirderBlock.TOP)), 2 | 16);
+			level.setBlock(pos, postProcess(state.cycle(CopperGirderBlock.BOTTOM)), 2 | 16);
+			if (dirPair.getSecond() == Action.PAIR && BrassBlocks.COPPER_GIRDER.has(other))
+				level.setBlock(otherPos, postProcess(other.cycle(CopperGirderBlock.TOP)), 2 | 16);
 			return true;
 		}
 
@@ -196,11 +195,11 @@ public class BrassGirderWrenchBehavior {
 	}
 
 	private static BlockState postProcess(BlockState newState) {
-		if (newState.getValue(BrassGirderBlock.TOP) && newState.getValue(BrassGirderBlock.BOTTOM))
+		if (newState.getValue(CopperGirderBlock.TOP) && newState.getValue(CopperGirderBlock.BOTTOM))
 			return newState;
-		if (newState.getValue(BrassGirderBlock.AXIS) != Axis.Y)
+		if (newState.getValue(CopperGirderBlock.AXIS) != Axis.Y)
 			return newState;
-		return newState.setValue(BrassGirderBlock.AXIS, newState.getValue(BrassGirderBlock.X) ? Axis.X : Axis.Z);
+		return newState.setValue(CopperGirderBlock.AXIS, newState.getValue(CopperGirderBlock.X) ? Axis.X : Axis.Z);
 	}
 
 	private enum Action {

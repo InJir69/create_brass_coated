@@ -19,7 +19,8 @@ import java.util.Map;
 public class BrassSpriteShifts {
 
 	public static final CTSpriteShiftEntry
-		BRASS_GIRDER_POLE = vertical("brass_girder_pole_side");
+		BRASS_GIRDER_POLE = vertical("brass_girder_pole_side"),
+	    COPPER_GIRDER_POLE = vertical("copper_girder_pole_side");
 
 	private static CTSpriteShiftEntry omni(String name) {
 		return getCT(AllCTTypes.OMNIDIRECTIONAL, name);

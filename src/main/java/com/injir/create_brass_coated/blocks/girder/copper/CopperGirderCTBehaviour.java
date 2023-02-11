@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.copper;
 
 import com.injir.create_brass_coated.BrassSpriteShifts;
 import com.simibubi.create.foundation.block.connected.CTSpriteShiftEntry;
@@ -11,14 +11,14 @@ import net.minecraft.world.level.BlockAndTintGetter;
 import net.minecraft.world.level.block.state.BlockState;
 import org.jetbrains.annotations.Nullable;
 
-public class BrassGirderCTBehaviour extends ConnectedTextureBehaviour.Base {
+public class CopperGirderCTBehaviour extends ConnectedTextureBehaviour.Base {
 
 	@Override
 	public CTSpriteShiftEntry getShift(BlockState state, Direction direction, @Nullable TextureAtlasSprite sprite) {
-		if (!state.hasProperty(BrassGirderBlock.X))
+		if (!state.hasProperty(CopperGirderBlock.X))
 			return null;
-		return !state.getValue(BrassGirderBlock.X) && !state.getValue(BrassGirderBlock.Z) && direction.getAxis() != Axis.Y
-			? BrassSpriteShifts.BRASS_GIRDER_POLE
+		return !state.getValue(CopperGirderBlock.X) && !state.getValue(CopperGirderBlock.Z) && direction.getAxis() != Axis.Y
+			? BrassSpriteShifts.COPPER_GIRDER_POLE
 			: null;
 	}
 
@@ -28,7 +28,7 @@ public class BrassGirderCTBehaviour extends ConnectedTextureBehaviour.Base {
 		BlockPos otherPos, Direction face) {
 		if (other.getBlock() != state.getBlock())
 			return false;
-		return !other.getValue(BrassGirderBlock.X) && !other.getValue(BrassGirderBlock.Z);
+		return !other.getValue(CopperGirderBlock.X) && !other.getValue(CopperGirderBlock.Z);
 	}
 
 }

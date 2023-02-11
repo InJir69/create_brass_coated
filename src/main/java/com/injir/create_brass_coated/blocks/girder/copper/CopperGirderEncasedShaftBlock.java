@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.copper;
 
 import com.injir.create_brass_coated.blocks.BrassBlocks;
 import com.injir.create_brass_coated.blocks.BrassTiles;
@@ -33,13 +33,13 @@ import net.minecraft.world.phys.shapes.VoxelShape;
 
 import static net.minecraft.world.level.block.state.properties.BlockStateProperties.WATERLOGGED;
 
-public class BrassGirderEncasedShaftBlock extends HorizontalAxisKineticBlock
+public class CopperGirderEncasedShaftBlock extends HorizontalAxisKineticBlock
 	implements ITE<KineticTileEntity>, SimpleWaterloggedBlock, IWrenchable {
 
-	public static final BooleanProperty TOP = BrassGirderBlock.TOP;
-	public static final BooleanProperty BOTTOM = BrassGirderBlock.BOTTOM;
+	public static final BooleanProperty TOP = CopperGirderBlock.TOP;
+	public static final BooleanProperty BOTTOM = CopperGirderBlock.BOTTOM;
 
-	public BrassGirderEncasedShaftBlock(Properties properties) {
+	public CopperGirderEncasedShaftBlock(Properties properties) {
 		super(properties);
 	}
 
@@ -61,13 +61,13 @@ public class BrassGirderEncasedShaftBlock extends HorizontalAxisKineticBlock
 
 	@Override
 	public BlockState getRotatedBlockState(BlockState originalState, Direction targetedFace) {
-		return BrassBlocks.BRASS_GIRDER.getDefaultState()
+		return BrassBlocks.COPPER_GIRDER.getDefaultState()
 			.setValue(WATERLOGGED, originalState.getValue(WATERLOGGED))
-			.setValue(BrassGirderBlock.X, originalState.getValue(HORIZONTAL_AXIS) == Axis.Z)
-			.setValue(BrassGirderBlock.Z, originalState.getValue(HORIZONTAL_AXIS) == Axis.X)
-			.setValue(BrassGirderBlock.AXIS, originalState.getValue(HORIZONTAL_AXIS) == Axis.X ? Axis.Z : Axis.X)
-			.setValue(BrassGirderBlock.BOTTOM, originalState.getValue(BOTTOM))
-			.setValue(BrassGirderBlock.TOP, originalState.getValue(TOP));
+			.setValue(CopperGirderBlock.X, originalState.getValue(HORIZONTAL_AXIS) == Axis.Z)
+			.setValue(CopperGirderBlock.Z, originalState.getValue(HORIZONTAL_AXIS) == Axis.X)
+			.setValue(CopperGirderBlock.AXIS, originalState.getValue(HORIZONTAL_AXIS) == Axis.X ? Axis.Z : Axis.X)
+			.setValue(CopperGirderBlock.BOTTOM, originalState.getValue(BOTTOM))
+			.setValue(CopperGirderBlock.TOP, originalState.getValue(TOP));
 	}
 
 	@Override
@@ -108,7 +108,7 @@ public class BrassGirderEncasedShaftBlock extends HorizontalAxisKineticBlock
 				.getBlockSupportShape(world, pos.relative(direction))
 				.isEmpty())
 				state = state.setValue(updateProperty, false);
-			return BrassGirderBlock.updateVerticalProperty(world, pos, state, updateProperty, neighbourState, direction);
+			return CopperGirderBlock.updateVerticalProperty(world, pos, state, updateProperty, neighbourState, direction);
 		}
 
 		return state;

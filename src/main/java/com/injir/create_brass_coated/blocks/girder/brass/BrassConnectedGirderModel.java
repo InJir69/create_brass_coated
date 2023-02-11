@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.brass;
 
 import com.injir.create_brass_coated.blocks.BrassPartials;
 import com.simibubi.create.foundation.block.connected.CTModel;

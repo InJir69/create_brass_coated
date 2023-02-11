@@ -1,4 +1,4 @@
-package com.injir.create_brass_coated.blocks.girder;
+package com.injir.create_brass_coated.blocks.girder.brass;
 
 import com.injir.create_brass_coated.blocks.BrassBlocks;
 import com.simibubi.create.AllBlocks;
