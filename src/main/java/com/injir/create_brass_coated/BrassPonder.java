@@ -78,7 +78,17 @@ public class BrassPonder extends PonderIndex {
 				.addStoryBoard("chute/upward", ChuteScenes::upward);
 		HELPER.forComponents(BrassBlocks.BRASS_CHUTE, BrassBlocks.SMART_BRASS_CHUTE)
 				.addStoryBoard("chute/smart", ChuteScenes::smart);
-
+		HELPER.forComponents(BrassBlocks.BRASS_MECHANICAL_PUMP)
+				.addStoryBoard("mechanical_pump/flow", PumpScenes::flow, PonderTag.FLUIDS, PonderTag.KINETIC_APPLIANCES)
+				.addStoryBoard("mechanical_pump/speed", PumpScenes::speed);
+		HELPER.forComponents(BrassBlocks.BRASS_PIPE)
+				.addStoryBoard("fluid_pipe/flow", PipeScenes::flow, PonderTag.FLUIDS)
+				.addStoryBoard("fluid_pipe/interaction", PipeScenes::interaction)
+				.addStoryBoard("fluid_pipe/encasing", PipeScenes::encasing);
+		HELPER.forComponents(BrassBlocks.BRASS_VALVE)
+				.addStoryBoard("fluid_valve", PipeScenes::valve, PonderTag.FLUIDS, PonderTag.KINETIC_APPLIANCES);
+		HELPER.forComponents(BrassBlocks.SMART_BRASS_PIPE)
+				.addStoryBoard("smart_pipe", PipeScenes::smart, PonderTag.FLUIDS);
 
 		// Debug scenes, can be found in game via the Brass Hand
 		if (REGISTER_DEBUG_SCENES)
@@ -92,19 +102,26 @@ public class BrassPonder extends PonderIndex {
 	public static void registerTags() {
 
 		PonderRegistry.TAGS.forTag(PonderTag.KINETIC_RELAYS)
-			.add(BrassBlocks.BRASS_GEARBOX)
-			.add(BrassBlocks.BRASS_CLUTCH)
-			.add(BrassBlocks.BRASS_GEARSHIFT)
-			.add(BrassBlocks.BRASS_ENCASED_CHAIN_DRIVE)
-			.add(BrassBlocks.BRASS_ADJUSTABLE_CHAIN_GEARSHIFT);
+				.add(BrassBlocks.BRASS_GEARBOX)
+				.add(BrassBlocks.BRASS_CLUTCH)
+				.add(BrassBlocks.BRASS_GEARSHIFT)
+				.add(BrassBlocks.BRASS_ENCASED_CHAIN_DRIVE)
+				.add(BrassBlocks.BRASS_ADJUSTABLE_CHAIN_GEARSHIFT);
 
 		PonderRegistry.TAGS.forTag(PonderTag.KINETIC_APPLIANCES)
-			.add(BrassBlocks.BRASS_ENCASED_FAN)
-			.add(BrassBlocks.BRASS_MECHANICAL_PRESS)
-			.add(BrassBlocks.BRASS_MECHANICAL_MIXER)
-			.add(BrassBlocks.BRASS_MECHANICAL_DRILL)
-			.add(BrassBlocks.BRASS_MECHANICAL_SAW)
-			.add(BrassBlocks.BRASS_DEPLOYER);
+				.add(BrassBlocks.BRASS_ENCASED_FAN)
+				.add(BrassBlocks.BRASS_MECHANICAL_PRESS)
+				.add(BrassBlocks.BRASS_MECHANICAL_MIXER)
+				.add(BrassBlocks.BRASS_MECHANICAL_DRILL)
+				.add(BrassBlocks.BRASS_MECHANICAL_SAW)
+				.add(BrassBlocks.BRASS_DEPLOYER)
+				.add(BrassBlocks.BRASS_MECHANICAL_PUMP);
+
+		PonderRegistry.TAGS.forTag(PonderTag.FLUIDS)
+				.add(BrassBlocks.BRASS_PIPE)
+				.add(BrassBlocks.BRASS_MECHANICAL_PUMP)
+				.add(AllBlocks.FLUID_VALVE)
+				.add(AllBlocks.SMART_FLUID_PIPE);
 
 		PonderRegistry.TAGS.forTag(PonderTag.ARM_TARGETS)
 				.add(BrassBlocks.BRASS_DEPOT)
@@ -122,15 +139,15 @@ public class BrassPonder extends PonderIndex {
 				.add(BrassBlocks.SMART_BRASS_CHUTE);
 
 		PonderRegistry.TAGS.forTag(PonderTag.DECORATION)
-			.add(BrassBlocks.BRASS_GIRDER)
-			.add(BrassBlocks.COPPER_GIRDER);
+				.add(BrassBlocks.BRASS_GIRDER)
+				.add(BrassBlocks.COPPER_GIRDER);
 
 		PonderRegistry.TAGS.forTag(PonderTag.CONTRAPTION_ACTOR)
-			.add(BrassBlocks.BRASS_MECHANICAL_HARVESTER)
-			.add(BrassBlocks.BRASS_MECHANICAL_PLOUGH)
-			.add(BrassBlocks.BRASS_MECHANICAL_DRILL)
-			.add(BrassBlocks.BRASS_MECHANICAL_SAW)
-			.add(AllBlocks.PORTABLE_STORAGE_INTERFACE);
+				.add(BrassBlocks.BRASS_MECHANICAL_HARVESTER)
+				.add(BrassBlocks.BRASS_MECHANICAL_PLOUGH)
+				.add(BrassBlocks.BRASS_MECHANICAL_DRILL)
+				.add(BrassBlocks.BRASS_MECHANICAL_SAW)
+				.add(BrassBlocks.BRASS_PORTABLE_STORAGE_INTERFACE);
 
 	}
 

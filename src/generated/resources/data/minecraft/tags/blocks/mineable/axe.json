@@ -11,6 +11,7 @@
     "create_brass_coated:brass_weighted_ejector",
     "create_brass_coated:brass_mechanical_press",
     "create_brass_coated:brass_mechanical_mixer",
+    "create_brass_coated:encased_brass_pipe",
     "create_brass_coated:brass_mechanical_drill",
     "create_brass_coated:brass_mechanical_harvester",
     "create_brass_coated:brass_mechanical_plough",

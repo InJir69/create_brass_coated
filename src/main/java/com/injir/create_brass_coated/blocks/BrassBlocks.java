@@ -32,6 +32,7 @@ import com.injir.create_brass_coated.blocks.drill.BrassDrillMovementBehaviour;
 import com.injir.create_brass_coated.blocks.gearbox.BrassGearboxBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterBlock;
 import com.injir.create_brass_coated.blocks.harvester.BrassHarvesterMovementBehaviour;
+import com.injir.create_brass_coated.blocks.pipe.*;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughBlock;
 import com.injir.create_brass_coated.blocks.plough.BrassPloughMovementBehaviour;
 import com.injir.create_brass_coated.blocks.portable_storage.BrassPortableStorageInterfaceBlock;
@@ -51,12 +52,15 @@ import com.simibubi.create.foundation.data.*;
 import com.tterrag.registrate.providers.loot.RegistrateBlockLootTables;
 import com.tterrag.registrate.util.entry.BlockEntry;
 import net.minecraft.client.renderer.RenderType;
+import net.minecraft.core.Direction;
 import net.minecraft.world.level.block.SoundType;
 import net.minecraft.world.level.block.state.BlockBehaviour;
+import net.minecraft.world.level.block.state.properties.BlockStateProperties;
 import net.minecraft.world.level.material.MaterialColor;
 import net.minecraft.world.level.storage.loot.LootPool;
 import net.minecraft.world.level.storage.loot.entries.LootItem;
 import net.minecraft.world.level.storage.loot.providers.number.ConstantValue;
+import net.minecraftforge.client.model.generators.ConfiguredModel;
 
 import static com.simibubi.create.AllInteractionBehaviours.interactionBehaviour;
 import static com.simibubi.create.AllMovementBehaviours.movementBehaviour;
@@ -310,6 +314,85 @@ public class BrassBlocks {
 									.add(LootItem.lootTableItem(AllBlocks.SHAFT.get()))))))
 					.onRegister(CreateRegistrate.blockModel(() -> CopperConnectedGirderModel::new))
 					.register();
+
+	public static final BlockEntry<BrassPipeBlock> BRASS_PIPE = BRASS_REGISTRATE.block("brass_pipe", BrassPipeBlock::new)
+			.initialProperties(SharedProperties::copperMetal)
+			.transform(pickaxeOnly())
+			.blockstate(BrassPipeGen.pipe())
+			.onRegister(CreateRegistrate.blockModel(() -> BrassPipeAttachmentModel::new))
+			.item()
+			.transform(customItemModel())
+			.register();
+
+	public static final BlockEntry<EncasedBrassPipeBlock> ENCASED_BRASS_PIPE =
+			BRASS_REGISTRATE.block("encased_brass_pipe", EncasedBrassPipeBlock::new)
+					.initialProperties(SharedProperties::copperMetal)
+					.properties(p -> p.color(MaterialColor.TERRACOTTA_LIGHT_GRAY))
+					.properties(BlockBehaviour.Properties::noOcclusion)
+					.transform(TagGen.axeOrPickaxe())
+					.blockstate(BrassPipeGen.encasedPipe())
+					.onRegister(CreateRegistrate.connectedTextures(() -> new EncasedCTBehaviour(AllSpriteShifts.BRASS_CASING)))
+					.onRegister(CreateRegistrate.casingConnectivity((block, cc) -> cc.make(block, AllSpriteShifts.BRASS_CASING,
+							(s, f) -> !s.getValue(EncasedBrassPipeBlock.FACING_TO_PROPERTY_MAP.get(f)))))
+					.onRegister(CreateRegistrate.blockModel(() -> BrassPipeAttachmentModel::new))
+					.loot((p, b) -> p.dropOther(b, BRASS_PIPE.get()))
+					.register();
+
+	public static final BlockEntry<GlassBrassPipeBlock> GLASS_BRASS_PIPE =
+			BRASS_REGISTRATE.block("glass_brass_pipe", GlassBrassPipeBlock::new)
+					.initialProperties(SharedProperties::copperMetal)
+					.addLayer(() -> RenderType::cutoutMipped)
+					.transform(pickaxeOnly())
+					.blockstate((c, p) -> {
+						p.getVariantBuilder(c.getEntry())
+								.forAllStatesExcept(state -> {
+									Direction.Axis axis = state.getValue(BlockStateProperties.AXIS);
+									return ConfiguredModel.builder()
+											.modelFile(p.models()
+													.getExistingFile(p.modLoc("block/brass_pipe/window")))
+											.uvLock(false)
+											.rotationX(axis == Direction.Axis.Y ? 0 : 90)
+											.rotationY(axis == Direction.Axis.X ? 90 : 0)
+											.build();
+								}, BlockStateProperties.WATERLOGGED);
+					})
+					.onRegister(CreateRegistrate.blockModel(() -> BrassPipeAttachmentModel::new))
+					.loot((p, b) -> p.dropOther(b, BRASS_PIPE.get()))
+					.register();
+
+	public static final BlockEntry<BrassPumpBlock> BRASS_MECHANICAL_PUMP = BRASS_REGISTRATE.block("brass_mechanical_pump", BrassPumpBlock::new)
+			.initialProperties(SharedProperties::copperMetal)
+			.properties(p -> p.color(MaterialColor.STONE))
+			.transform(pickaxeOnly())
+			.blockstate(BlockStateGen.directionalBlockProviderIgnoresWaterlogged(true))
+			.onRegister(CreateRegistrate.blockModel(() -> BrassPipeAttachmentModel::new))
+			.transform(BlockStressDefaults.setImpact(4.0))
+			.item()
+			.transform(customItemModel())
+			.register();
+
+	public static final BlockEntry<SmartBrassPipeBlock> SMART_BRASS_PIPE =
+			BRASS_REGISTRATE.block("smart_brass_pipe", SmartBrassPipeBlock::new)
+					.initialProperties(SharedProperties::copperMetal)
+					.properties(p -> p.color(MaterialColor.TERRACOTTA_YELLOW))
+					.transform(pickaxeOnly())
+					.blockstate(new SmartBrassPipeGenerator()::generate)
+					.onRegister(CreateRegistrate.blockModel(() -> BrassPipeAttachmentModel::new))
+					.item()
+					.transform(customItemModel())
+					.register();
+
+	public static final BlockEntry<BrassValveBlock> BRASS_VALVE = BRASS_REGISTRATE.block("brass_valve", BrassValveBlock::new)
+			.initialProperties(SharedProperties::copperMetal)
+			.transform(pickaxeOnly())
+			.blockstate((c, p) -> BlockStateGen.directionalAxisBlock(c, p,
+					(state, vertical) -> AssetLookup.partialBaseModel(c, p, vertical ? "vertical" : "horizontal",
+							state.getValue(BrassValveBlock.ENABLED) ? "open" : "closed")))
+			.onRegister(CreateRegistrate.blockModel(() -> BrassPipeAttachmentModel::new))
+			.item()
+			.transform(customItemModel())
+			.register();
+
 
 	public static final BlockEntry<BrassDrillBlock> BRASS_MECHANICAL_DRILL = BRASS_REGISTRATE.block("brass_mechanical_drill", BrassDrillBlock::new)
 			.initialProperties(SharedProperties::stone)

@@ -21,8 +21,16 @@
   "block.create_brass_coated.brass_weighted_ejector": "Латунная весовая катапульта",
   "block.create_brass_coated.brass_chute": "Латунный Жёлоб",
   "block.create_brass_coated.smart_brass_chute": "Умный латунный жёлоб",
-  "block.create_brass_coated.copper_bracket": "Медная балка",
-  "block.create_brass_coated.copper_girder": "Вал в медной балке",
+  "block.create_brass_coated.brass_mechanical_pump": "Латунная механическая помпа",
+  "block.create_brass_coated.copper_bracket": "Медная скоба",
+  "block.create_brass_coated.brass_bracket": "Латунная скоба",
+  "block.create_brass_coated.copper_girder": "Медная балка",
+  "block.create_brass_coated.copper_girder_encased_shaft": "Вал в медной балке",
+  "block.create_brass_coated.encased_brass_pipe": "Латунная труба в корпусе",
+  "block.create_brass_coated.glass_brass_pipe": "Стеклянная латунная труба",
+  "block.create_brass_coated.smart_brass_pipe": "Умная латунная труба",
+  "block.create_brass_coated.brass_valve": "Латунная труба с вентилем",
+  "block.create_brass_coated.brass_pipe": "Латунная труба",
   "_": "Credits: InJir",
   
   "item.create_brass_coated.vertical_brass_gearbox": "Латунная вертикальная коробка передач"
