@@ -135,7 +135,7 @@ public class BrassMechanicalPressTileEntity extends BasinOperatingTileEntity imp
 				ItemEntity created =
 					new ItemEntity(level, itemEntity.getX(), itemEntity.getY(), itemEntity.getZ(), result);
 				created.setDefaultPickUpDelay();
-				created.setDeltaMovement(VecHelper.offsetRandomly(Vec3.ZERO, (RandomSource) Create.RANDOM, .05f));
+				created.setDeltaMovement(VecHelper.offsetRandomly(Vec3.ZERO, level.random, .05f));
 				level.addFreshEntity(created);
 			}
 			item.shrink(1);
